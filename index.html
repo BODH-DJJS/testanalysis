@@ -7,7 +7,11 @@
     <title>Deployment Analytics Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +20,11 @@
             min-height: 100vh;
         }
 
-        @media (max-width: 768px) { body { padding: 10px; } }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+        }
 
         .container {
             max-width: 1600px;
@@ -27,50 +35,116 @@
             overflow: hidden;
         }
 
-        @media (max-width: 768px) { .container { border-radius: 10px; } }
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 10px;
+            }
+        }
 
         .header {
-            position: relative;
-            color: white;
-            padding: 30px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            min-height: 150px;
-            overflow: hidden;
-        }
+    position: relative;
+    color: white;
+    padding: 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    min-height: 150px;
+    overflow: hidden;
+}
 
-        .header-background { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; }
-        .header-bg-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-        .header-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(102,126,234,0.7) 0%, rgba(118,75,162,0.7) 100%);
-        }
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
 
-        .header-logo {
-            width: 280px; height: 180px; object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)) drop-shadow(0 4px 10px rgba(0,0,0,0.3));
-            position: absolute; left: 160px; top: calc(50% - 90px); z-index: 2;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-        .header-logo:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 20px rgba(255,255,255,1)) drop-shadow(0 6px 15px rgba(0,0,0,0.4));
-        }
-        .header-content { margin-left: 100px; text-align: center; z-index: 2; position: relative; }
-        .header h1 { font-size: 2.2em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .header p { font-size: 1em; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+.header-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
 
-        @media (max-width: 768px) {
-            .header { padding: 25px 15px; flex-direction: column; text-align: center; min-height: 140px; }
-            .header-logo { width: 100px; height: 105px; position: relative; left: 0; top: 0; }
-            .header-content { margin-left: 0; text-align: center; }
-            .header h1 { font-size: 1.6em; }
-            .header p { font-size: 0.9em; }
-        }
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+}
 
-        .filters-container { background: #f8f9fa; border-bottom: 2px solid #e9ecef; }
+.header-logo {
+    width: 280px;
+    height: 180px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)) drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    position: absolute;
+    left: 160px;
+    top: calc(50% - 90px);
+    z-index: 2;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1)) drop-shadow(0 6px 15px rgba(0,0,0,0.4));
+}
+
+.header-content {
+    margin-left: 100px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 2.2em;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1em;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 25px 15px;
+        flex-direction: column;
+        text-align: center;
+        min-height: 140px;
+    }
+    .header-logo {
+        width: 100px;
+        height: 105px;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    .header-content {
+        margin-left: 0;
+        text-align: center;
+    }
+    .header h1 {
+        font-size: 1.6em;
+    }
+    .header p {
+        font-size: 0.9em;
+    }
+}
+
+        .filters-container {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
 
         .quick-actions {
             padding: 20px 30px;
@@ -78,92 +152,263 @@
             gap: 15px;
             flex-wrap: wrap;
             align-items: center;
-            background: linear-gradient(135deg, rgba(102,126,234,0.05) 0%, rgba(118,75,162,0.05) 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
         }
 
-        @media (max-width: 768px) { .quick-actions { padding: 15px; gap: 10px; justify-content: center; } }
+        @media (max-width: 768px) {
+            .quick-actions {
+                padding: 15px;
+                gap: 10px;
+                justify-content: center;
+            }
+        }
 
-        .action-label { font-weight: 600; color: #495057; font-size: 0.95em; }
-        @media (max-width: 768px) { .action-label { width: 100%; text-align: center; font-size: 0.85em; } }
+        .action-label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .action-label {
+                width: 100%;
+                text-align: center;
+                font-size: 0.85em;
+            }
+        }
 
         .quick-link-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; padding: 10px 20px; border-radius: 8px;
-            text-decoration: none; font-weight: 600; font-size: 0.9em;
-            transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
-            box-shadow: 0 4px 15px rgba(102,126,234,0.2); border: none; cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+            border: none;
+            cursor: pointer;
         }
+
         @media (max-width: 768px) {
-            .quick-link-btn { padding: 10px 15px; font-size: 0.85em; flex: 1; justify-content: center; min-width: 140px; }
+            .quick-link-btn {
+                padding: 10px 15px;
+                font-size: 0.85em;
+                flex: 1;
+                justify-content: center;
+                min-width: 140px;
+            }
         }
-        .quick-link-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.3); }
+
+        .quick-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
         .quick-link-btn.secondary {
             background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            box-shadow: 0 4px 15px rgba(67,233,123,0.2);
+            box-shadow: 0 4px 15px rgba(67, 233, 123, 0.2);
         }
-        .quick-link-btn.secondary:hover { box-shadow: 0 6px 20px rgba(67,233,123,0.3); }
+
+        .quick-link-btn.secondary:hover {
+            box-shadow: 0 6px 20px rgba(67, 233, 123, 0.3);
+        }
 
         .campaign-tag {
-            background: #fff3cd; color: #856404; padding: 4px 12px;
-            border-radius: 12px; font-size: 0.8em; font-weight: 600;
+            background: #fff3cd;
+            color: #856404;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
         }
-        @media (max-width: 768px) { .campaign-tag { width: 100%; text-align: center; font-size: 0.75em; } }
+
+        @media (max-width: 768px) {
+            .campaign-tag {
+                width: 100%;
+                text-align: center;
+                font-size: 0.75em;
+            }
+        }
 
         .filters {
-            padding: 20px 30px 30px 30px; background: #f8f9fa;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px;
+            padding: 20px 30px 30px 30px;
+            background: #f8f9fa;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
         }
-        @media (max-width: 768px) { .filters { padding: 15px; gap: 15px; } }
 
-        .filter-group { display: flex; flex-direction: column; flex: 1; min-width: 160px; margin-right: 10px; }
-        .filter-group label { font-weight: 600; margin-bottom: 8px; color: #495057; font-size: 0.9em; }
+        @media (max-width: 768px) {
+            .filters {
+                padding: 15px;
+                gap: 15px;
+            }
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 160px;
+            margin-right: 10px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+            font-size: 0.9em;
+        }
+
         .filter-group select {
-            padding: 10px; border: 2px solid #dee2e6; border-radius: 8px;
-            font-size: 1em; transition: all 0.3s; background: white; cursor: pointer;
+            padding: 10px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+            background: white;
+            cursor: pointer;
         }
-        .filter-group select:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
 
-        .custom-select { position: relative; }
-        .select-display {
-            padding: 10px; border: 2px solid #dee2e6; border-radius: 8px;
-            background: white; cursor: pointer; transition: all 0.3s; min-height: 42px;
-            display: flex; align-items: center; justify-content: space-between;
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        .select-display:hover { border-color: #667eea; }
-        .select-display.active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
-        .select-arrow { margin-left: 10px; transition: transform 0.3s; }
-        .select-arrow.rotated { transform: rotate(180deg); }
+
+        .custom-select {
+            position: relative;
+        }
+
+        .select-display {
+            padding: 10px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .select-display:hover {
+            border-color: #667eea;
+        }
+
+        .select-display.active {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .select-arrow {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .select-arrow.rotated {
+            transform: rotate(180deg);
+        }
 
         .select-dropdown {
-            position: absolute; top: 100%; left: 0; right: 0;
-            max-height: 400px; overflow-y: auto; background: white;
-            border: 2px solid #667eea; border-radius: 8px; margin-top: 5px;
-            z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 400px;
+            overflow-y: auto;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            margin-top: 5px;
+            max-height: 350px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
         }
-        .select-dropdown.show { display: block; }
+
+        .select-dropdown.show {
+            display: block;
+        }
 
         .select-option {
-            padding: 10px 15px; cursor: pointer; transition: background 0.2s;
-            display: flex; align-items: center; gap: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .select-option:hover { background: #f8f9fa; }
+
+        .select-option:hover {
+            background: #f8f9fa;
+        }
+
         .select-option.all-option {
-            border-bottom: 2px solid #e9ecef; background: #f8f9fa; font-weight: 600;
+            border-bottom: 2px solid #e9ecef;
+            background: #f8f9fa;
+            font-weight: 600;
         }
-        .select-option input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: #667eea; }
-        .select-option label { cursor: pointer; flex: 1; user-select: none; }
+
+        .select-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .select-option label {
+            cursor: pointer;
+            flex: 1;
+            user-select: none;
+        }
 
         .filter-actions {
-            padding: 10px 15px; border-top: 2px solid #e9ecef;
-            display: flex; gap: 10px; background: #f8f9fa; position: sticky; bottom: 0;
+            padding: 10px 15px;
+            border-top: 2px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+            background: #f8f9fa;
+            position: sticky;
+            bottom: 0;
         }
-        .filter-btn { flex: 1; padding: 8px 16px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 0.9em; }
-        .filter-btn.clear { background: white; color: #667eea; border: 2px solid #667eea; }
-        .filter-btn.clear:hover { background: #f8f9fa; }
+
+        .filter-btn {
+            flex: 1;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+
+        .filter-btn.clear {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .filter-btn.clear:hover {
+            background: #f8f9fa;
+        }
 
         .selected-count {
-            background: #667eea; color: white; padding: 2px 8px;
-            border-radius: 12px; font-size: 0.85em; font-weight: 600;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
         }
 
         .filter-hint {
@@ -171,6 +416,147 @@
             color: #999;
             margin-top: 4px;
             font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px 15px;
+            }
+        }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h2 {
+            margin-bottom: 20px;
+            color: #495057;
+            font-size: 1.3em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2em;
+            color: #dc3545;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 20px 15px;
+            }
+            .table-container h2 {
+                font-size: 1.2em;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            min-width: 800px;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.85em;
+            }
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            cursor: pointer;
         }
 
         .activity-badge {
@@ -187,6 +573,167 @@
         .badge-meditation { background: #e8f5e9; color: #388e3c; }
         .badge-rally { background: #fff3e0; color: #f57c00; }
 
+        .view-details-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .view-details-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                max-height: 85vh;
+            }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .detail-item {
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-item label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .detail-item .value {
+            color: #212529;
+            font-size: 1.1em;
+        }
+
+        .activities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .activity-chip {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .activity-chip.active {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
         /* Custom checkbox styling */
         .select-options-container input[type="checkbox"]:checked + label:before {
             content: '✓';
@@ -205,12 +752,12 @@
             font-size: 12px;
             line-height: 1;
         }
-
+        
         /* Hover effect for options */
         .select-options-container > div:hover {
             background-color: #f5f5f5;
         }
-
+        
         /* Hide the default checkbox */
         .select-options-container input[type="checkbox"] {
             position: absolute;
@@ -219,389 +766,246 @@
             height: 1px;
         }
 
-        /* ===================== TAB NAVIGATION ===================== */
-        .tab-nav {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 3px solid #e9ecef;
-            padding: 0 30px;
-            gap: 0;
-            overflow-x: auto;
+        /* =====================================================================
+           CAMPAIGN ANALYSIS — NEW CSS ONLY (nothing above changed)
+        ===================================================================== */
+
+        .campaign-section-wrapper {
+            padding: 30px;
+            background: #f8f9ff;
+            border-top: 3px solid #e9ecef;
         }
-        .tab-btn {
-            padding: 16px 28px;
-            border: none;
-            background: transparent;
-            font-size: 1em;
-            font-weight: 600;
+
+        .campaign-section-title {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .campaign-section-sub {
             color: #6c757d;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -3px;
-            transition: all 0.3s;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+        }
+
+        /* Year filter for campaign section */
+        .camp-year-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            padding: 16px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .camp-year-bar label {
+            font-weight: 700;
+            color: #495057;
+            font-size: 0.9em;
             white-space: nowrap;
+        }
+
+        .camp-year-btn {
+            padding: 7px 18px;
+            border-radius: 20px;
+            border: 2px solid #dee2e6;
+            background: white;
+            color: #6c757d;
+            font-weight: 600;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .camp-year-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .camp-year-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+        }
+
+        /* Overview cards row */
+        .camp-overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .camp-overview-card {
+            border-radius: 14px;
+            padding: 20px 18px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+            cursor: default;
+        }
+
+        .camp-overview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.15);
+        }
+
+        .camp-overview-card .c-icon { font-size: 1.6em; margin-bottom: 6px; display: block; }
+        .camp-overview-card .c-label { font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.85; }
+        .camp-overview-card .c-value { font-size: 2em; font-weight: 800; line-height: 1.1; margin: 4px 0 2px; }
+        .camp-overview-card .c-sub { font-size: 0.78em; opacity: 0.78; }
+
+        .coc-blue   { background: linear-gradient(135deg,#667eea,#764ba2); box-shadow: 0 6px 20px rgba(102,126,234,0.3); }
+        .coc-pink   { background: linear-gradient(135deg,#f093fb,#f5576c); box-shadow: 0 6px 20px rgba(245,87,108,0.3); }
+        .coc-teal   { background: linear-gradient(135deg,#4facfe,#00f2fe); box-shadow: 0 6px 20px rgba(79,172,254,0.3); }
+        .coc-green  { background: linear-gradient(135deg,#43e97b,#38f9d7); box-shadow: 0 6px 20px rgba(67,233,123,0.3); }
+
+        /* Main charts grid */
+        .camp-charts-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .camp-charts-row { grid-template-columns: 1fr; }
+            .camp-overview-grid { grid-template-columns: repeat(2,1fr); }
+        }
+
+        .camp-chart-box {
+            background: white;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        }
+
+        .camp-chart-box h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .tab-btn:hover { color: #667eea; background: rgba(102,126,234,0.05); }
-        .tab-btn.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-            background: rgba(102,126,234,0.07);
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
 
-        /* ===================== STATS ===================== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px; padding: 30px;
-        }
-        @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px 15px; }
-        }
-        @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+        .camp-chart-canvas-wrap { position: relative; height: 320px; }
 
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; padding: 25px; border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s;
+        /* Leaderboard */
+        .camp-leaderboard-box {
+            background: white;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            margin-bottom: 28px;
         }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-        .stat-card h3 { font-size: 0.9em; opacity: 0.9; margin-bottom: 10px; }
-        .stat-card .value { font-size: 2.5em; font-weight: bold; }
 
-        /* ===================== CHARTS ===================== */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px; padding: 30px;
-        }
-        @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; gap: 20px; padding: 20px 15px; } }
-
-        .chart-container {
-            background: white; padding: 25px; border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .chart-container h2 {
-            margin-bottom: 20px; color: #495057; font-size: 1.3em;
-            border-bottom: 3px solid #667eea; padding-bottom: 10px;
-        }
-        .chart-wrapper { position: relative; height: 350px; }
-
-        /* ===================== TABLE ===================== */
-        .table-container { padding: 30px; overflow-x: auto; }
-        @media (max-width: 768px) { .table-container { padding: 20px 15px; } }
-
-        table {
-            width: 100%; border-collapse: collapse; background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 10px;
-            overflow: hidden; min-width: 800px;
-        }
-        @media (max-width: 768px) { table { font-size: 0.85em; } }
-        thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #e9ecef; }
-        tbody tr:hover { background: #f8f9fa; cursor: pointer; }
-
-        .view-details-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; border: none; padding: 8px 16px; border-radius: 6px;
-            cursor: pointer; font-size: 0.9em; font-weight: 600; transition: transform 0.2s;
-        }
-        .view-details-btn:hover { transform: scale(1.05); }
-
-        /* ===================== MODAL ===================== */
-        .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background: rgba(0,0,0,0.5); animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal-content {
-            background: white; margin: 5% auto; padding: 0; border-radius: 15px;
-            width: 90%; max-width: 900px; max-height: 80vh; overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: slideIn 0.3s;
-        }
-        @media (max-width: 768px) { .modal-content { width: 95%; margin: 10% auto; max-height: 85vh; } }
-        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; padding: 25px 30px; border-radius: 15px 15px 0 0;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .modal-header h2 { margin: 0; font-size: 1.5em; }
-        .close-btn {
-            background: rgba(255,255,255,0.2); border: none; color: white;
-            font-size: 28px; font-weight: bold; cursor: pointer;
-            width: 40px; height: 40px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; transition: background 0.3s;
-        }
-        .close-btn:hover { background: rgba(255,255,255,0.3); }
-        .modal-body { padding: 30px; }
-        .detail-section { margin-bottom: 25px; }
-        .detail-section h3 {
-            color: #667eea; margin-bottom: 15px; font-size: 1.2em;
-            border-bottom: 2px solid #e9ecef; padding-bottom: 10px;
-        }
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; gap: 10px; } }
-        .detail-item {
-            padding: 12px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;
-        }
-        .detail-item label { font-weight: 600; color: #495057; font-size: 0.9em; display: block; margin-bottom: 5px; }
-        .detail-item .value { color: #212529; font-size: 1.1em; }
-        .activities-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .activity-chip {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; font-weight: 600;
-        }
-        .activity-chip.active { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-
-        /* ===================== CAMPAIGN ANALYSIS SECTION ===================== */
-        .campaign-analysis-wrapper { padding: 30px; }
-
-        .campaign-hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            color: white;
-        }
-        .campaign-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(102,126,234,0.3) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .campaign-hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: 20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(118,75,162,0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .campaign-hero-inner { position: relative; z-index: 2; }
-        .campaign-hero h2 {
-            font-size: 1.6em;
-            font-weight: 800;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #a78bfa, #60a5fa, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .campaign-hero p { opacity: 0.75; font-size: 0.95em; margin-bottom: 30px; }
-
-        .campaign-selector-row {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: flex-end;
-        }
-        .campaign-select-group { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 220px; }
-        .campaign-select-group label { font-size: 0.85em; font-weight: 600; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; }
-        .campaign-select-group select {
-            padding: 12px 16px;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            color: white;
+        .camp-leaderboard-box h3 {
             font-size: 1em;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='white' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            padding-right: 36px;
-        }
-        .campaign-select-group select:focus {
-            outline: none;
-            border-color: rgba(167,139,250,0.8);
-            background: rgba(255,255,255,0.15);
-        }
-        .campaign-select-group select option { background: #1a1a2e; color: white; }
-
-        /* Campaign KPI Cards */
-        .campaign-kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .campaign-kpi-card {
-            border-radius: 16px;
-            padding: 24px 20px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: default;
-        }
-        .campaign-kpi-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        .campaign-kpi-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            opacity: 0.08;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E") repeat;
-        }
-        .campaign-kpi-card.blue { background: linear-gradient(135deg, #667eea, #764ba2); color: white; box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
-        .campaign-kpi-card.pink { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; box-shadow: 0 8px 25px rgba(245,87,108,0.3); }
-        .campaign-kpi-card.teal { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; box-shadow: 0 8px 25px rgba(79,172,254,0.3); }
-        .campaign-kpi-card.green { background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; box-shadow: 0 8px 25px rgba(67,233,123,0.3); }
-        .campaign-kpi-card.orange { background: linear-gradient(135deg, #fa8231, #f7b731); color: white; box-shadow: 0 8px 25px rgba(247,183,49,0.3); }
-        .campaign-kpi-card.indigo { background: linear-gradient(135deg, #a18cd1, #fbc2eb); color: white; box-shadow: 0 8px 25px rgba(161,140,209,0.3); }
-
-        .kpi-icon { font-size: 2em; margin-bottom: 8px; display: block; position: relative; z-index: 1; }
-        .kpi-label { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; margin-bottom: 6px; position: relative; z-index: 1; }
-        .kpi-value { font-size: 2.4em; font-weight: 800; line-height: 1; position: relative; z-index: 1; }
-        .kpi-sub { font-size: 0.8em; opacity: 0.75; margin-top: 4px; position: relative; z-index: 1; }
-
-        /* Campaign Charts */
-        .campaign-charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        @media (max-width: 768px) { .campaign-charts-grid { grid-template-columns: 1fr; } }
-
-        .campaign-chart-card {
-            background: white;
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #f0f0f0;
-        }
-        .campaign-chart-card h3 {
-            font-size: 1.05em;
             font-weight: 700;
             color: #2d3748;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .lb-row {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
         }
-        .campaign-chart-card h3 span.chart-icon {
-            width: 32px; height: 32px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 8px;
+
+        .lb-row:last-child { border-bottom: none; }
+
+        .lb-rank {
+            width: 34px; height: 34px;
+            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.9em;
+            font-weight: 800; font-size: 0.85em;
+            flex-shrink: 0;
         }
-        .campaign-chart-wrapper { position: relative; height: 300px; }
 
-        /* Campaign Comparison Table */
-        .campaign-compare-section {
+        .lb-r1 { background: linear-gradient(135deg,#f7b731,#fa8231); color: white; }
+        .lb-r2 { background: linear-gradient(135deg,#b2bec3,#636e72); color: white; }
+        .lb-r3 { background: linear-gradient(135deg,#cd7f32,#a0522d); color: white; }
+        .lb-rn { background: #f0f0f0; color: #6c757d; }
+
+        .lb-name { flex: 1; }
+        .lb-name strong { display: block; font-size: 0.92em; color: #2d3748; }
+        .lb-name span   { font-size: 0.78em; color: #999; }
+
+        .lb-bar-wrap { flex: 2; background: #f0f0f0; border-radius: 4px; height: 8px; overflow: hidden; }
+        .lb-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(135deg,#667eea,#764ba2); transition: width 0.8s ease; }
+
+        .lb-count { font-weight: 800; color: #667eea; min-width: 55px; text-align: right; font-size: 1em; }
+
+        /* Campaign detail table */
+        .camp-detail-table-wrap {
             background: white;
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #f0f0f0;
-            margin-bottom: 30px;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            overflow-x: auto;
         }
-        .campaign-compare-section h3 {
-            font-size: 1.1em;
+
+        .camp-detail-table-wrap h3 {
+            font-size: 1em;
             font-weight: 700;
             color: #2d3748;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
         }
-        .compare-table {
+
+        .camp-detail-table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 8px;
-            min-width: 600px;
+            border-spacing: 0 6px;
+            min-width: 560px;
         }
-        .compare-table thead tr th {
+
+        .camp-detail-table thead th {
             background: transparent;
-            color: #6c757d;
-            font-size: 0.78em;
+            color: #888;
+            font-size: 0.76em;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border: none;
         }
-        .compare-table tbody tr td {
+
+        .camp-detail-table tbody td {
             background: #f8f9ff;
-            padding: 14px 16px;
+            padding: 13px 14px;
             border: none;
-            transition: all 0.2s;
+            font-size: 0.9em;
+            transition: background 0.2s;
         }
-        .compare-table tbody tr:hover td { background: #eef0ff; }
-        .compare-table tbody tr td:first-child { border-radius: 10px 0 0 10px; font-weight: 600; color: #2d3748; }
-        .compare-table tbody tr td:last-child { border-radius: 0 10px 10px 0; }
-        .compare-table tbody tr.highlight td { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); }
-        .compare-table tbody tr.highlight td:first-child { border-left: 3px solid #667eea; }
 
-        .progress-bar-wrapper { width: 100%; background: #e9ecef; border-radius: 4px; height: 8px; overflow: hidden; }
-        .progress-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(135deg, #667eea, #764ba2); transition: width 0.8s ease; }
+        .camp-detail-table tbody tr:hover td { background: #eef0ff; }
+        .camp-detail-table tbody td:first-child { border-radius: 10px 0 0 10px; font-weight: 700; color: #2d3748; }
+        .camp-detail-table tbody td:last-child  { border-radius: 0 10px 10px 0; }
 
-        /* Campaign Branch Leaderboard */
-        .leaderboard-section {
-            background: white;
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid #f0f0f0;
-        }
-        .leaderboard-section h3 {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 20px;
-        }
-        .leaderboard-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 14px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .leaderboard-item:last-child { border-bottom: none; }
-        .leaderboard-rank {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 0.9em; flex-shrink: 0;
-        }
-        .rank-1 { background: linear-gradient(135deg, #f7b731, #fa8231); color: white; }
-        .rank-2 { background: linear-gradient(135deg, #b2bec3, #636e72); color: white; }
-        .rank-3 { background: linear-gradient(135deg, #cd7f32, #a0522d); color: white; }
-        .rank-other { background: #f0f0f0; color: #6c757d; }
+        .camp-bar-inline { display: flex; align-items: center; gap: 8px; }
+        .camp-bar-inline .prog-bar { flex: 1; background: #e9ecef; border-radius: 4px; height: 7px; overflow: hidden; min-width: 60px; }
+        .camp-bar-inline .prog-fill { height: 100%; border-radius: 4px; background: linear-gradient(135deg,#667eea,#764ba2); }
+        .camp-bar-inline .prog-num  { font-weight: 700; color: #667eea; min-width: 28px; text-align: right; font-size: 0.9em; }
 
-        .leaderboard-info { flex: 1; }
-        .leaderboard-branch { font-weight: 600; color: #2d3748; font-size: 0.95em; }
-        .leaderboard-state { font-size: 0.8em; color: #6c757d; }
-        .leaderboard-bar { flex: 2; }
-        .leaderboard-count { font-weight: 700; color: #667eea; font-size: 1.05em; text-align: right; min-width: 60px; }
-
-        /* No data state */
-        .no-campaign-data {
-            text-align: center;
-            padding: 60px 30px;
-            color: #6c757d;
-        }
-        .no-campaign-data .icon { font-size: 4em; margin-bottom: 15px; opacity: 0.5; }
-        .no-campaign-data p { font-size: 1.1em; }
-
-        /* Loading */
-        .loading { text-align: center; padding: 50px; font-size: 1.5em; color: #667eea; }
-        .error { text-align: center; padding: 50px; font-size: 1.2em; color: #dc3545; }
     </style>
 </head>
 <body>
@@ -622,18 +1026,17 @@
 
     <div class="container" id="main-content" style="display: none;">
         <button onclick="signOut()" style="position: absolute; top: 20px; right: 20px; padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; z-index: 1000;">Sign Out</button>
-
         <div class="header">
-            <div class="header-background">
-                <img src="https://raw.githubusercontent.com/bodh-djjs/Analysis/main/BODH_banner.jpg" alt="BODH Banner" class="header-bg-image" onerror="this.style.display='none'">
-                <div class="header-overlay"></div>
-            </div>
-            <img src="https://raw.githubusercontent.com/bodh-djjs/Analysis/main/BODH_logo.png" alt="BODH Logo" class="header-logo" onerror="this.style.display='none'">
-            <div class="header-content">
-                <h1>DJJS BODH Data Analysis Dashboard 📊</h1>
-                <p>Comprehensive Branch Activities Analysis [2006 – Current]</p>
-            </div>
-        </div>
+    <div class="header-background">
+        <img src="https://raw.githubusercontent.com/bodh-djjs/Analysis/main/BODH_banner.jpg" alt="BODH Banner" class="header-bg-image" onerror="this.style.display='none'">
+        <div class="header-overlay"></div>
+    </div>
+    <img src="https://raw.githubusercontent.com/bodh-djjs/Analysis/main/BODH_logo.png" alt="BODH Logo" class="header-logo" onerror="this.style.display='none'">
+    <div class="header-content">
+        <h1>DJJS BODH Data Analysis Dashboard 📊</h1>
+        <p>Comprehensive Branch Activities Analysis [2006 – Current]</p>
+    </div>
+</div>
 
         <div class="filters-container">
             <div class="quick-actions">
@@ -651,224 +1054,242 @@
                 <div class="filter-group">
                     <label>State</label>
                     <div class="custom-select" data-filter="state">
-                        <div class="select-display"><span class="select-text">All States</span><span class="select-arrow">▼</span></div>
+                        <div class="select-display">
+                            <span class="select-text">All States</span>
+                            <span class="select-arrow">▼</span>
+                        </div>
                         <div class="select-dropdown"></div>
                     </div>
                 </div>
                 <div class="filter-group">
                     <label>Branch</label>
                     <div class="custom-select" data-filter="branch">
-                        <div class="select-display"><span class="select-text">All Branches</span><span class="select-arrow">▼</span></div>
+                        <div class="select-display">
+                            <span class="select-text">All Branches</span>
+                            <span class="select-arrow">▼</span>
+                        </div>
                         <div class="select-dropdown"></div>
                     </div>
                 </div>
                 <div class="filter-group">
                     <label>Year</label>
                     <div class="custom-select" data-filter="year">
-                        <div class="select-display"><span class="select-text">All Years</span><span class="select-arrow">▼</span></div>
+                        <div class="select-display">
+                            <span class="select-text">All Years</span>
+                            <span class="select-arrow">▼</span>
+                        </div>
                         <div class="select-dropdown"></div>
                     </div>
                 </div>
                 <div class="filter-group">
                     <label>Month</label>
                     <div class="custom-select" data-filter="month">
-                        <div class="select-display"><span class="select-text">All Months</span><span class="select-arrow">▼</span></div>
+                        <div class="select-display">
+                            <span class="select-text">All Months</span>
+                            <span class="select-arrow">▼</span>
+                        </div>
                         <div class="select-dropdown"></div>
                     </div>
                 </div>
                 <div class="filter-group">
                     <label>Program Type</label>
                     <div class="custom-select" data-filter="programType">
-                        <div class="select-display"><span class="select-text">All Types</span><span class="select-arrow">▼</span></div>
+                        <div class="select-display">
+                            <span class="select-text">All Types</span>
+                            <span class="select-arrow">▼</span>
+                        </div>
                         <div class="select-dropdown"></div>
                     </div>
                 </div>
                 <div class="filter-group">
                     <label>Campaign</label>
                     <div class="custom-select" data-filter="campaign">
-                        <div class="select-display"><span class="select-text">All Campaigns</span><span class="select-arrow">▼</span></div>
+                        <div class="select-display">
+                            <span class="select-text">All Campaigns</span>
+                            <span class="select-arrow">▼</span>
+                        </div>
                         <div class="select-dropdown"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB NAVIGATION -->
-        <div class="tab-nav">
-            <button class="tab-btn active" onclick="switchTab('overview', this)">
-                📊 Overview
-            </button>
-            <button class="tab-btn" onclick="switchTab('campaign', this)">
-                🎯 Campaign Analysis
-            </button>
+        <div class="stats-grid" id="statsGrid"></div>
+
+        <div class="charts-grid" id="chartsGrid"></div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 20px; color: #495057;">📋 Recent Programs</h2>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>State</th>
+                        <th>Branch</th>
+                        <th>Venue/Address</th>
+                        <th>Beneficiaries</th>
+                        <th>Program Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
         </div>
 
-        <!-- OVERVIEW TAB -->
-        <div class="tab-content active" id="tab-overview">
-            <div class="stats-grid" id="statsGrid"></div>
-            <div class="charts-grid" id="chartsGrid"></div>
-            <div class="table-container">
-                <h2 style="margin-bottom: 20px; color: #495057;">📋 Recent Programs</h2>
-                <table id="dataTable">
+        <!-- ================================================================
+             CAMPAIGN ANALYSIS SECTION — added below existing content
+        ================================================================ -->
+        <div class="campaign-section-wrapper" id="campaignAnalysisSection">
+            <div class="campaign-section-title">🎯 Campaign-wise Analysis</div>
+            <div class="campaign-section-sub">Performance breakdown across all campaigns — filter by year using the buttons below</div>
+
+            <!-- Year filter pills -->
+            <div class="camp-year-bar">
+                <label>📅 Filter by Year:</label>
+                <div id="campYearPills" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+            </div>
+
+            <!-- Summary KPI row -->
+            <div class="camp-overview-grid" id="campOverviewGrid"></div>
+
+            <!-- Row 1: Programs per campaign (bar) + Beneficiaries per campaign (bar) -->
+            <div class="camp-charts-row">
+                <div class="camp-chart-box">
+                    <h3>📊 Programs Conducted — per Campaign</h3>
+                    <div class="camp-chart-canvas-wrap"><canvas id="campBarPrograms"></canvas></div>
+                </div>
+                <div class="camp-chart-box">
+                    <h3>👥 Beneficiaries Reached — per Campaign</h3>
+                    <div class="camp-chart-canvas-wrap"><canvas id="campBarBenef"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Row 2: Activity mix per campaign (stacked) + Program type distribution (pie) -->
+            <div class="camp-charts-row">
+                <div class="camp-chart-box">
+                    <h3>🗺️ State-wise Reach — per Campaign</h3>
+                    <div class="camp-chart-canvas-wrap"><canvas id="campStackedState"></canvas></div>
+                </div>
+                <div class="camp-chart-box">
+                    <h3>🎬 Activity Mix — per Campaign</h3>
+                    <div class="camp-chart-canvas-wrap"><canvas id="campRadar"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Row 3: Monthly trend per campaign (line) + Avg beneficiaries per program (horizontal bar) -->
+            <div class="camp-charts-row">
+                <div class="camp-chart-box">
+                    <h3>📅 Monthly Trend — per Campaign</h3>
+                    <div class="camp-chart-canvas-wrap"><canvas id="campLineMonthly"></canvas></div>
+                </div>
+                <div class="camp-chart-box">
+                    <h3>⚡ Avg Beneficiaries / Program — per Campaign</h3>
+                    <div class="camp-chart-canvas-wrap"><canvas id="campAvgBenef"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Branch leaderboard per campaign -->
+            <div class="camp-leaderboard-box">
+                <h3>🏆 Branch Leaderboard — Top Performers across Campaigns</h3>
+                <div id="campLeaderboard"></div>
+            </div>
+
+            <!-- Detail table -->
+            <div class="camp-detail-table-wrap">
+                <h3>📋 Campaign Summary Table</h3>
+                <table class="camp-detail-table" id="campDetailTable">
                     <thead>
                         <tr>
-                            <th>Date</th><th>State</th><th>Branch</th>
-                            <th>Venue/Address</th><th>Beneficiaries</th>
-                            <th>Program Type</th><th>Action</th>
+                            <th>Campaign</th>
+                            <th>Programs</th>
+                            <th>Beneficiaries</th>
+                            <th>Branches</th>
+                            <th>States</th>
+                            <th>Avg / Program</th>
+                            <th>Share of Total</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody"></tbody>
+                    <tbody id="campDetailTbody"></tbody>
                 </table>
             </div>
         </div>
+        <!-- END CAMPAIGN ANALYSIS SECTION -->
 
-        <!-- CAMPAIGN ANALYSIS TAB -->
-        <div class="tab-content" id="tab-campaign">
-            <div class="campaign-analysis-wrapper">
-
-                <!-- Campaign Hero / Selector -->
-                <div class="campaign-hero">
-                    <div class="campaign-hero-inner">
-                        <h2>🎯 Campaign Performance Deep-Dive</h2>
-                        <p>Select a campaign to explore branch-wise performance, trends, and impact metrics</p>
-                        <div class="campaign-selector-row">
-                            <div class="campaign-select-group">
-                                <label>Select Campaign</label>
-                                <select id="campaignSelector" onchange="updateCampaignAnalysis()">
-                                    <option value="">— Choose a Campaign —</option>
-                                </select>
-                            </div>
-                            <div class="campaign-select-group">
-                                <label>Compare With</label>
-                                <select id="campaignCompare" onchange="updateCampaignAnalysis()">
-                                    <option value="">— No Comparison —</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- KPI Cards -->
-                <div class="campaign-kpi-grid" id="campaignKpiGrid">
-                    <div class="no-campaign-data" style="grid-column: 1/-1;">
-                        <div class="icon">🎯</div>
-                        <p>Select a campaign above to view performance metrics</p>
-                    </div>
-                </div>
-
-                <!-- Charts Row -->
-                <div class="campaign-charts-grid" id="campaignChartsGrid" style="display:none;">
-                    <div class="campaign-chart-card">
-                        <h3><span class="chart-icon">📅</span> Monthly Trend</h3>
-                        <div class="campaign-chart-wrapper"><canvas id="campMonthlyChart"></canvas></div>
-                    </div>
-                    <div class="campaign-chart-card">
-                        <h3><span class="chart-icon">🗺️</span> State-wise Reach</h3>
-                        <div class="campaign-chart-wrapper"><canvas id="campStateChart"></canvas></div>
-                    </div>
-                    <div class="campaign-chart-card">
-                        <h3><span class="chart-icon">🎬</span> Activity Mix</h3>
-                        <div class="campaign-chart-wrapper"><canvas id="campActivityChart"></canvas></div>
-                    </div>
-                    <div class="campaign-chart-card">
-                        <h3><span class="chart-icon">📋</span> Program Types</h3>
-                        <div class="campaign-chart-wrapper"><canvas id="campTypeChart"></canvas></div>
-                    </div>
-                </div>
-
-                <!-- Campaign Comparison Table -->
-                <div class="campaign-compare-section" id="campaignCompareSection" style="display:none;">
-                    <h3>📊 Campaign vs Campaign Comparison</h3>
-                    <div style="overflow-x: auto;">
-                        <table class="compare-table" id="compareTable">
-                            <thead>
-                                <tr>
-                                    <th>Metric</th>
-                                    <th id="compareHeader1">Campaign 1</th>
-                                    <th id="compareHeader2">Campaign 2</th>
-                                    <th>Winner</th>
-                                </tr>
-                            </thead>
-                            <tbody id="compareTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Branch Leaderboard -->
-                <div class="campaign-charts-grid" id="leaderboardGrid" style="display:none;">
-                    <div class="leaderboard-section">
-                        <h3>🏆 Top Branches — <span id="leaderboardCampaignName">Selected Campaign</span></h3>
-                        <div id="leaderboardList"></div>
-                    </div>
-                    <div class="campaign-chart-card">
-                        <h3><span class="chart-icon">👥</span> Beneficiary Breakdown</h3>
-                        <div class="campaign-chart-wrapper"><canvas id="campBenefChart"></canvas></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Modal -->
+        <!-- Modal for Activity Details -->
         <div id="activityModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2>🎯 Program Details</h2>
                     <button class="close-btn" onclick="closeModal()">&times;</button>
                 </div>
-                <div class="modal-body" id="modalBody"></div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Content will be populated dynamically -->
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Authentication Configuration
         const AUTH_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaP4CXwnAQsRpKa20kHx5rXp8Ku5rtYI_fquVXxixBD7wYUjS2IvfThZnbzY0EHLpKGw/exec';
         const API_URL = 'https://script.google.com/macros/s/AKfycbytrnrDsnh6MZp2qEaDmdTOVhlkaM9hDGu4g3Qz-oDp2MHicyCzT3P5ZZRxNGJbUtRc/exec';
-
+        
         let allData = [];
         let filteredData = [];
         let charts = {};
-        let campaignCharts = {};
-        let selectedFilters = { state: [], branch: [], year: [], month: [], programType: [], campaign: [] };
-
-        const activityFields = ['Lecture','Skit','Motivational Songs','Choreography','Demo',
-            'Video Screening','Meditation Session','Discussion/ Meeting / Conference',
-            'Exhibition','Om Chanting','Counseling','Rally / Road Show',
-            'Drawing  / Craft','Signature Campaign','TOT','Survey'];
-
-        const monthMap = {
-            'jan':'January','january':'January','feb':'February','february':'February',
-            'mar':'March','march':'March','apr':'April','april':'April','may':'May',
-            'jun':'June','june':'June','jul':'July','july':'July','aug':'August','august':'August',
-            'sep':'September','sept':'September','september':'September','oct':'October','october':'October',
-            'nov':'November','november':'November','dec':'December','december':'December'
+        let selectedFilters = {
+            state: [],
+            branch: [],
+            year: [],
+            month: [],
+            programType: [],
+            campaign: []
         };
-        const monthOrder = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+        const activityFields = ['Lecture', 'Skit', 'Motivational Songs', 'Choreography', 'Demo', 
+                                'Video Screening', 'Meditation Session', 'Discussion/ Meeting / Conference',
+                                'Exhibition', 'Om Chanting', 'Counseling', 'Rally / Road Show', 
+                                'Drawing  / Craft', 'Signature Campaign', 'TOT', 'Survey'];
+
+        // Month mapping for standardization
+        const monthMap = {
+            'jan': 'January', 'january': 'January',
+            'feb': 'February', 'february': 'February',
+            'mar': 'March', 'march': 'March',
+            'apr': 'April', 'april': 'April',
+            'may': 'May',
+            'jun': 'June', 'june': 'June',
+            'jul': 'July', 'july': 'July',
+            'aug': 'August', 'august': 'August',
+            'sep': 'September', 'sept': 'September', 'september': 'September',
+            'oct': 'October', 'october': 'October',
+            'nov': 'November', 'november': 'November',
+            'dec': 'December', 'december': 'December'
+        };
 
         function normalizeMonth(month) {
             if (!month) return '';
-            return monthMap[month.toLowerCase().trim()] || month;
+            const normalized = monthMap[month.toLowerCase().trim()];
+            return normalized || month;
         }
 
-        // ===================== TAB SWITCHING =====================
-        function switchTab(tab, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('tab-' + tab).classList.add('active');
-            if (tab === 'campaign') updateCampaignAnalysis();
-        }
-
-        // ===================== DATA FETCHING =====================
         async function fetchData() {
             try {
                 const response = await fetch(API_URL);
                 const result = await response.json();
-                allData = result.data.map(record => ({ ...record, Month: normalizeMonth(record.Month) }));
+                allData = result.data;
+                
+                // Normalize month values in the data
+                allData = allData.map(record => ({
+                    ...record,
+                    Month: normalizeMonth(record.Month)
+                }));
+                
                 filteredData = [...allData];
                 initializeDashboard();
             } catch (error) {
-                document.querySelector('.container').innerHTML = '<div class="error">Error loading data. Please try again later.</div>';
+                document.querySelector('.container').innerHTML = 
+                    '<div class="error">Error loading data. Please try again later.</div>';
             }
         }
 
@@ -876,73 +1297,102 @@
             populateFilters();
             setupFilterListeners();
             updateDashboard();
-            populateCampaignSelectors();
         }
 
-        // ===================== FILTERS =====================
         function populateFilters() {
             const states = [...new Set(allData.map(d => d.State).filter(Boolean))].sort();
             const years = [...new Set(allData.map(d => d.Year).filter(Boolean))].sort((a, b) => b - a);
-            const months = monthOrder;
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
             const programTypes = [...new Set(allData.map(d => d['Type of Program']).filter(Boolean))].sort();
             const campaigns = [...new Set(allData.map(d => d['Campaign Name'] || 'Not Specified').filter(Boolean))].sort();
+
             createCustomSelect('state', states);
             createCustomSelect('year', years);
             createCustomSelect('month', months);
             createCustomSelect('programType', programTypes);
             createCustomSelect('campaign', campaigns);
+            
             updateBranchOptions();
         }
 
         function createCustomSelect(filterType, options) {
             const container = document.querySelector(`.custom-select[data-filter="${filterType}"]`);
             const dropdown = container.querySelector('.select-dropdown');
+            
+            // Create HTML with sticky header containing All checkbox
             let html = `
-                <div class="select-option all-option" style="position:sticky;top:0;background:white;z-index:10;border-bottom:1px solid #eee;padding:0;margin:0;box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 15px;">
-                        <div style="display:flex;align-items:center;flex-grow:1;">
-                            <input type="checkbox" id="${filterType}_all" data-filter-type="${filterType}" class="all-checkbox" style="margin-right:10px;">
-                            <label for="${filterType}_all" style="font-weight:600;cursor:pointer;margin:0;width:100%;padding:5px 0;">All</label>
+                <div class="select-option all-option" style="position: sticky; top: 0; background: white; z-index: 10; border-bottom: 1px solid #eee; padding: 0; margin: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 15px;">
+                        <div style="display: flex; align-items: center; flex-grow: 1;">
+                            <input type="checkbox" id="${filterType}_all" data-filter-type="${filterType}" class="all-checkbox" style="margin-right: 10px;">
+                            <label for="${filterType}_all" style="font-weight: 600; cursor: pointer; margin: 0; width: 100%; padding: 5px 0;">All</label>
                         </div>
                     </div>
                 </div>
-                <div class="select-options-container" style="max-height:300px;overflow-y:auto;">
+                <div class="select-options-container" style="max-height: 300px; overflow-y: auto;">
                     ${options.map(opt => {
-                        const safeId = `${filterType}_${String(opt).replace(/[^a-zA-Z0-9]/g,'_')}`;
+                        const safeId = `${filterType}_${opt.replace(/[^a-zA-Z0-9]/g, '_')}`;
                         return `
-                        <div style="position:relative;border-bottom:1px solid #f0f0f0;">
-                            <input type="checkbox" id="${safeId}" value="${opt}" data-filter-type="${filterType}" class="item-checkbox" style="position:absolute;opacity:0;width:1px;height:1px;">
-                            <label for="${safeId}" style="display:block;padding:10px 15px 10px 40px;margin:0;cursor:pointer;position:relative;transition:all 0.2s ease;user-select:none;">
-                                <span style="position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;border:2px solid #667eea;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all 0.2s ease;font-size:14px;font-weight:bold;color:white;">
-                                    <span style="opacity:0;transition:opacity 0.2s ease;">✓</span>
+                        <div style="position: relative; border-bottom: 1px solid #f0f0f0;">
+                            <input type="checkbox" id="${safeId}" 
+                                   value="${opt}" data-filter-type="${filterType}" class="item-checkbox" 
+                                   style="position: absolute; opacity: 0; width: 1px; height: 1px;">
+                            <label for="${safeId}" 
+                                   style="display: block; padding: 10px 15px 10px 40px; margin: 0; cursor: pointer; 
+                                          position: relative; transition: all 0.2s ease;
+                                          user-select: none;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+                                            width: 18px; height: 18px; border: 2px solid #667eea; border-radius: 4px;
+                                            display: flex; align-items: center; justify-content: center;
+                                            transition: all 0.2s ease; font-size: 14px; font-weight: bold;
+                                            color: white;">
+                                    <span style="opacity: 0; transition: opacity 0.2s ease;">✓</span>
                                 </span>
-                                <span style="display:inline-block;vertical-align:middle;">${opt}</span>
+                                <span style="display: inline-block; vertical-align: middle;">${opt}</span>
                             </label>
-                            <style>#${safeId}:checked + label span:first-child{background:#667eea;}#${safeId}:checked + label span:first-child span{opacity:1;}</style>
+                            <style>
+                                #${safeId}:checked + label span:first-child {
+                                    background: #667eea;
+                                }
+                                #${safeId}:checked + label span:first-child span {
+                                    opacity: 1;
+                                }
+                            </style>
                         </div>`;
                     }).join('')}
                 </div>
-                <div class="filter-actions" style="position:sticky;bottom:0;background:white;padding:10px;border-top:1px solid #eee;display:flex;justify-content:flex-end;">
-                    <button class="filter-btn clear" data-filter-type="${filterType}" style="padding:5px 15px;border:1px solid #ddd;background:#f8f9fa;border-radius:4px;cursor:pointer;margin-right:10px;">Clear All</button>
+                <div class="filter-actions" style="position: sticky; bottom: 0; background: white; padding: 10px; border-top: 1px solid #eee; display: flex; justify-content: flex-end;">
+                    <button class="filter-btn clear" data-filter-type="${filterType}" style="padding: 5px 15px; border: 1px solid #ddd; background: #f8f9fa; border-radius: 4px; cursor: pointer; margin-right: 10px;">Clear All</button>
                 </div>`;
+            
             dropdown.innerHTML = html;
+
+            // Set all checkboxes checked by default if no selection
             if (selectedFilters[filterType].length === 0) {
                 dropdown.querySelector('.all-checkbox').checked = true;
                 dropdown.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = true);
             } else {
+                // Restore previous selections
                 selectedFilters[filterType].forEach(val => {
-                    const cb = dropdown.querySelector(`input[value="${val}"]`);
-                    if (cb) cb.checked = true;
+                    const checkbox = dropdown.querySelector(`input[value="${val}"]`);
+                    if (checkbox) checkbox.checked = true;
                 });
                 updateAllCheckbox(filterType);
             }
+
+            // Add event listeners
             setupDropdownListeners(filterType);
         }
 
-        document.addEventListener('click', function(e) {
+        // Global click handler to close dropdown when clicking outside
+        document.addEventListener('click', function closeDropdownOnClickOutside(e) {
             const dropdowns = document.querySelectorAll('.select-dropdown.show');
             dropdowns.forEach(dropdown => {
                 const container = dropdown.closest('.custom-select');
+                const filterType = container.dataset.filter;
+                
+                // If click is outside the dropdown and not on the select display
                 if (!dropdown.contains(e.target) && !container.querySelector('.select-display').contains(e.target)) {
                     dropdown.classList.remove('show');
                     container.querySelector('.select-arrow').classList.remove('rotated');
@@ -955,32 +1405,56 @@
             const container = document.querySelector(`.custom-select[data-filter="${filterType}"]`);
             const dropdown = container.querySelector('.select-dropdown');
             const selectDisplay = container.querySelector('.select-display');
+            // Function to apply the current filter selection
             const applyCurrentSelection = () => {
-                const checked = Array.from(dropdown.querySelectorAll('.item-checkbox:checked')).map(cb => cb.value);
-                selectedFilters[filterType] = checked;
-                if (filterType === 'state') updateBranchOptions();
+                const checkedBoxes = dropdown.querySelectorAll('.item-checkbox:checked');
+                const selected = Array.from(checkedBoxes).map(cb => cb.value);
+                
+                // Update selected filters
+                selectedFilters[filterType] = selected;
+                
+                // If this is the state filter, update branch options
+                if (filterType === 'state') {
+                    updateBranchOptions();
+                }
+                
                 applyFilters();
             };
+            
+            // "All" checkbox logic
             const allCheckbox = dropdown.querySelector('.all-checkbox');
             allCheckbox.addEventListener('change', (e) => {
-                dropdown.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = e.target.checked);
+                const itemCheckboxes = dropdown.querySelectorAll('.item-checkbox');
+                itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
                 applyCurrentSelection();
             });
+            
+            // Individual checkbox logic
             dropdown.querySelectorAll('.item-checkbox').forEach(checkbox => {
                 checkbox.addEventListener('change', (e) => {
-                    e.stopPropagation();
+                    e.stopPropagation(); // Prevent event from bubbling up to document
                     updateAllCheckbox(filterType);
                     applyCurrentSelection();
                 });
+                
+                // Prevent label click from closing dropdown
                 const label = checkbox.nextElementSibling;
-                if (label && label.tagName === 'LABEL') label.addEventListener('click', e => e.stopPropagation());
+                if (label && label.tagName === 'LABEL') {
+                    label.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                }
             });
+            
+            // Clear button
             dropdown.querySelector('.filter-btn.clear').addEventListener('click', (e) => {
                 e.stopPropagation();
                 dropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                 allCheckbox.checked = false;
                 applyCurrentSelection();
             });
+            
+            // Auto-close dropdown when clicking outside or after selection
             document.addEventListener('click', (e) => {
                 if (!container.contains(e.target)) {
                     dropdown.classList.remove('show');
@@ -996,49 +1470,151 @@
             const allCheckbox = dropdown.querySelector('.all-checkbox');
             const itemCheckboxes = dropdown.querySelectorAll('.item-checkbox');
             const checkedCount = dropdown.querySelectorAll('.item-checkbox:checked').length;
+            
             allCheckbox.checked = checkedCount === itemCheckboxes.length;
             allCheckbox.indeterminate = checkedCount > 0 && checkedCount < itemCheckboxes.length;
         }
 
         function updateBranchOptions() {
             const selectedStates = selectedFilters.state;
-            let branchData = selectedStates.length > 0 ? allData.filter(d => selectedStates.includes(d.State)) : allData;
+            
+            let branchData = allData;
+            if (selectedStates.length > 0) {
+                branchData = allData.filter(d => selectedStates.includes(d.State));
+            }
+            
             const branches = [...new Set(branchData.map(d => d.Branch).filter(Boolean))].sort();
+            
+            // Clear invalid branch selections
             selectedFilters.branch = selectedFilters.branch.filter(b => branches.includes(b));
+            
             createCustomSelect('branch', branches);
             updateSelectedDisplay('branch');
         }
 
         function updateSelectedDisplay(filterType) {
             const container = document.querySelector(`.custom-select[data-filter="${filterType}"]`);
-            if (!container) return;
+            if (!container) return; // Skip if container not found
+            
             const display = container.querySelector('.select-text');
-            if (!display) return;
+            if (!display) return; // Skip if display element not found
+            
             const selected = selectedFilters[filterType] || [];
-            const labels = { state:'All States', branch:'All Branches', year:'All Years', month:'All Months', programType:'All Types', campaign:'All Campaigns' };
+            const labels = {
+                state: 'All States',
+                branch: 'All Branches',
+                year: 'All Years',
+                month: 'All Months',
+                programType: 'All Types',
+                campaign: 'All Campaigns'
+            };
+            
+            if (selected.length === 0) {
+                display.innerHTML = labels[filterType];
+            } else if (selected.length === 1) {
+                display.innerHTML = selected[0].toString();
+            } else {
+                // Get total count of options
+                const dropdown = container.querySelector('.select-dropdown');
+                const totalOptions = dropdown ? dropdown.querySelectorAll('.item-checkbox').length : 0;
+                
+                if (totalOptions > 0 && selected.length === totalOptions) {
+                    display.innerHTML = labels[filterType];
+                } else {
+                    display.innerHTML = `${selected[0].toString()} <span class="selected-count">+${selected.length - 1}</span>`;
+                }
+            }
+            
+            // Update the checkboxes and their visual state
             const dropdown = container.querySelector('.select-dropdown');
-            const totalOptions = dropdown ? dropdown.querySelectorAll('.item-checkbox').length : 0;
-            if (selected.length === 0) display.innerHTML = labels[filterType];
-            else if (selected.length === 1) display.innerHTML = selected[0].toString();
-            else if (totalOptions > 0 && selected.length === totalOptions) display.innerHTML = labels[filterType];
-            else display.innerHTML = `${selected[0].toString()} <span class="selected-count">+${selected.length - 1}</span>`;
+            if (!dropdown) return;
+            
+            // Update all item checkboxes
+            const itemCheckboxes = dropdown.querySelectorAll('.item-checkbox');
+            itemCheckboxes.forEach(checkbox => {
+                const value = checkbox.value;
+                const isChecked = selected.includes(value);
+                checkbox.checked = isChecked;
+                
+                // Update the visual checkmark
+                const label = checkbox.nextElementSibling;
+                if (label && label.matches('label')) {
+                    const checkmark = label.querySelector('span:first-child span');
+                    if (checkmark) {
+                        checkmark.style.opacity = isChecked ? '1' : '0';
+                    }
+                    const checkmarkBox = label.querySelector('span:first-child');
+                    if (checkmarkBox) {
+                        checkmarkBox.style.background = isChecked ? '#667eea' : 'transparent';
+                        checkmarkBox.style.borderColor = isChecked ? '#667eea' : '#667eea';
+                    }
+                }
+            });
+            
+            // Update the 'All' checkbox state
+            const allCheckbox = dropdown.querySelector('.all-checkbox');
+            if (allCheckbox) {
+                allCheckbox.checked = selected.length === itemCheckboxes.length;
+                allCheckbox.indeterminate = selected.length > 0 && selected.length < itemCheckboxes.length;
+                
+                // Update the visual checkmark for 'All' checkbox
+                const allLabel = allCheckbox.nextElementSibling;
+                if (allLabel && allLabel.matches('label')) {
+                    const allCheckmark = allLabel.parentElement.querySelector('span:first-child');
+                    if (allCheckmark) {
+                        const checkmarkIcon = allCheckmark.querySelector('span');
+                        if (allCheckbox.checked) {
+                            allCheckmark.style.background = '#667eea';
+                            allCheckmark.style.borderColor = '#667eea';
+                            if (checkmarkIcon) checkmarkIcon.style.opacity = '1';
+                        } else if (allCheckbox.indeterminate) {
+                            allCheckmark.style.background = '#f0f0f0';
+                            allCheckmark.style.borderColor = '#667eea';
+                            if (checkmarkIcon) checkmarkIcon.style.opacity = '0';
+                        } else {
+                            allCheckmark.style.background = 'transparent';
+                            allCheckmark.style.borderColor = '#667eea';
+                            if (checkmarkIcon) checkmarkIcon.style.opacity = '0';
+                        }
+                    }
+                }
+            }
         }
 
         function setupFilterListeners() {
+            // Toggle dropdown on click
             document.querySelectorAll('.custom-select').forEach(select => {
                 const display = select.querySelector('.select-display');
                 const dropdown = select.querySelector('.select-dropdown');
                 const arrow = select.querySelector('.select-arrow');
+                
                 display.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    const isOpen = dropdown.classList.contains('show');
+                    
+                    const isCurrentlyOpen = dropdown.classList.contains('show');
+                    
+                    // Close all dropdowns first
                     document.querySelectorAll('.select-dropdown').forEach(dd => dd.classList.remove('show'));
                     document.querySelectorAll('.select-arrow').forEach(arr => arr.classList.remove('rotated'));
                     document.querySelectorAll('.select-display').forEach(disp => disp.classList.remove('active'));
-                    if (!isOpen) { dropdown.classList.add('show'); arrow.classList.add('rotated'); display.classList.add('active'); }
+                    
+                    // If it wasn't open, open it now
+                    if (!isCurrentlyOpen) {
+                        dropdown.classList.add('show');
+                        arrow.classList.add('rotated');
+                        display.classList.add('active');
+                    }
                 });
             });
-            document.querySelectorAll('.select-dropdown').forEach(dd => dd.addEventListener('click', e => e.stopPropagation()));
+            
+            // Prevent dropdown from closing when clicking inside it
+            document.querySelectorAll('.select-dropdown').forEach(dropdown => {
+                dropdown.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Close dropdowns when clicking outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.custom-select')) {
                     document.querySelectorAll('.select-dropdown').forEach(dd => dd.classList.remove('show'));
@@ -1050,37 +1626,78 @@
 
         function applyFilters() {
             filteredData = allData.filter(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                
                 return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
                        (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
                        (selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
-                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(d.Month)) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
                        (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
                        (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
             });
-            ['state','branch','year','month','programType','campaign'].forEach(f => updateSelectedDisplay(f));
+
+            // Update all filter displays
+            ['state', 'branch', 'year', 'month', 'programType', 'campaign'].forEach(filterType => {
+                updateSelectedDisplay(filterType);
+            });
+
             updateDashboard();
         }
 
-        // ===================== MAIN DASHBOARD =====================
-        function updateDashboard() { updateStats(); updateCharts(); updateTable(); }
+        function getSelectedValues(selectElement) {
+            // This function is no longer needed but kept for compatibility
+            return [];
+        }
+
+        function populateSelect(id, options) {
+            // This function is no longer needed but kept for compatibility
+        }
+
+        function updateDashboard() {
+            updateStats();
+            updateCharts();
+            updateTable();
+            updateCampaignAnalysis(); // NEW — refresh campaign section too
+        }
 
         function getBeneficiaryCount(record) {
+            // Use ONLY "Beneficiaries" field
             const value = record['Beneficiaries'] || '0';
+            
+            // Handle various formats: numbers, strings, "NA", empty, etc.
             if (!value || value === '' || value === null || value === undefined) return 0;
             if (typeof value === 'string' && (value.toUpperCase() === 'NA' || value.toUpperCase() === 'N/A')) return 0;
+            
             const parsed = parseInt(String(value).replace(/[^0-9]/g, ''));
             return isNaN(parsed) ? 0 : parsed;
         }
 
         function getCategoryValue(record, category) {
-            const variations = [category, category + ' ', category.trim()];
+            // Try multiple variations of field names
+            const variations = [
+                category,           // e.g., "Men"
+                category + ' ',     // e.g., "Men "
+                category.trim(),    // trimmed version
+            ];
+            
             let value = null;
-            for (let v of variations) {
-                if (record[v] !== undefined && record[v] !== null && record[v] !== '') { value = record[v]; break; }
+            for (let variant of variations) {
+                if (record[variant] !== undefined && record[variant] !== null && record[variant] !== '') {
+                    value = record[variant];
+                    break;
+                }
             }
+            
+            // If still no value found, return 0
             if (!value) return 0;
+            
+            // Handle various formats
             if (typeof value === 'string' && (value.toUpperCase() === 'NA' || value.toUpperCase() === 'N/A')) return 0;
-            const parsed = parseFloat(String(value).replace(/[^0-9.]/g, ''));
+            
+            // Remove any non-numeric characters except decimal point
+            const cleanValue = String(value).replace(/[^0-9.]/g, '');
+            const parsed = parseFloat(cleanValue);
+            
             return isNaN(parsed) ? 0 : Math.round(parsed);
         }
 
@@ -1089,151 +1706,435 @@
             const totalBeneficiaries = filteredData.reduce((sum, d) => sum + getBeneficiaryCount(d), 0);
             const uniqueBranches = new Set(filteredData.map(d => d.Branch)).size;
             const uniqueStates = new Set(filteredData.map(d => d.State)).size;
-            document.getElementById('statsGrid').innerHTML = `
-                <div class="stat-card" style="background:linear-gradient(135deg,#667eea,#764ba2)"><h3>Total Programs</h3><div class="value">${totalPrograms.toLocaleString()}</div></div>
-                <div class="stat-card" style="background:linear-gradient(135deg,#f093fb,#f5576c)"><h3>Total Beneficiaries</h3><div class="value">${totalBeneficiaries.toLocaleString()}</div></div>
-                <div class="stat-card" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"><h3>Active Branches</h3><div class="value">${uniqueBranches}</div></div>
-                <div class="stat-card" style="background:linear-gradient(135deg,#43e97b,#38f9d7)"><h3>States Covered</h3><div class="value">${uniqueStates}</div></div>`;
-        }
 
-        function getFilteredForCharts(excludeFilter) {
-            return allData.filter(d => {
-                return (excludeFilter === 'state' || selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
-                       (excludeFilter === 'branch' || selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
-                       (excludeFilter === 'year' || selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
-                       (excludeFilter === 'month' || selectedFilters.month.length === 0 || selectedFilters.month.includes(d.Month)) &&
-                       (excludeFilter === 'programType' || selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
-                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
-            });
+            const statsHTML = `
+                <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <h3>Total Programs</h3>
+                    <div class="value">${totalPrograms.toLocaleString()}</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <h3>Total Beneficiaries</h3>
+                    <div class="value">${totalBeneficiaries.toLocaleString()}</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <h3>Active Branches</h3>
+                    <div class="value">${uniqueBranches}</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <h3>States Covered</h3>
+                    <div class="value">${uniqueStates}</div>
+                </div>
+            `;
+            document.getElementById('statsGrid').innerHTML = statsHTML;
         }
 
         function updateCharts() {
-            Object.values(charts).forEach(c => c.destroy());
+            Object.values(charts).forEach(chart => chart.destroy());
             charts = {};
-            document.getElementById('chartsGrid').innerHTML = `
+
+            const chartsHTML = `
                 <div class="chart-container"><h2>📅 Monthly Program Trends</h2><div class="chart-wrapper"><canvas id="monthlyChart"></canvas></div></div>
                 <div class="chart-container"><h2>🏢 Top Branches by Programs</h2><div class="chart-wrapper"><canvas id="branchChart"></canvas></div></div>
                 <div class="chart-container"><h2>🎯 Activity Distribution</h2><div class="chart-wrapper"><canvas id="activityChart"></canvas></div></div>
                 <div class="chart-container"><h2>🗺️ State-wise Distribution</h2><div class="chart-wrapper"><canvas id="stateChart"></canvas></div></div>
                 <div class="chart-container"><h2>📊 Program Type Analysis</h2><div class="chart-wrapper"><canvas id="programTypeChart"></canvas></div></div>
-                <div class="chart-container"><h2>📈 Program Impact Over Years</h2><div class="chart-wrapper"><canvas id="impactChart"></canvas></div></div>`;
-            createMonthlyChart(); createBranchChart(); createActivityChart();
-            createStateChart(); createProgramTypeChart(); createImpactChart();
+                <div class="chart-container"><h2>📈 Program Impact Over Years</h2><div class="chart-wrapper"><canvas id="impactChart"></canvas></div></div>
+            `;
+            document.getElementById('chartsGrid').innerHTML = chartsHTML;
+
+            createMonthlyChart();
+            createBranchChart();
+            createActivityChart();
+            createStateChart();
+            createProgramTypeChart();
+            createImpactChart();
         }
 
-        function getSelectedValues(selectElement) { return []; }
-        function populateSelect(id, options) {}
-
         function createMonthlyChart() {
-            const data = getFilteredForCharts('month');
+            const monthOrder = ['January', 'February', 'March', 'April', 'May', 'June', 
+                               'July', 'August', 'September', 'October', 'November', 'December'];
             const monthData = {};
             monthOrder.forEach(m => monthData[m] = 0);
-            data.forEach(d => { if (monthData.hasOwnProperty(d.Month)) monthData[d.Month]++; });
-
+            
+            // Get data to use based on all current filters (except month to avoid circular filtering)
+            let useData = allData.filter(d => {
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
+            });
+            
+            useData.forEach(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                if (normalizedMonth && monthData.hasOwnProperty(normalizedMonth)) {
+                    monthData[normalizedMonth]++;
+                }
+            });
+            
+            // Add a subtitle to indicate if showing all-time data and/or filtered by campaign
             let subtitleText = '';
-            if (selectedFilters.year.length === 0) subtitleText = 'All-Time Data';
-            if (selectedFilters.campaign.length > 0) {
-                const ct = selectedFilters.campaign.join(', ');
-                subtitleText = subtitleText ? `${subtitleText} | Campaign: ${ct}` : `Campaign: ${ct}`;
+            if (selectedFilters.year.length === 0) {
+                subtitleText = 'All-Time Data';
             }
+            if (selectedFilters.campaign.length > 0) {
+                const campaignText = selectedFilters.campaign.join(', ');
+                subtitleText = subtitleText ? `${subtitleText} | Campaign: ${campaignText}` : `Campaign: ${campaignText}`;
+            }
+
             const ctx = document.getElementById('monthlyChart').getContext('2d');
             charts.monthly = new Chart(ctx, {
                 type: 'line',
-                data: { labels: monthOrder, datasets: [{ label: 'Programs', data: monthOrder.map(m => monthData[m]), borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.1)', fill: true, tension: 0.4, borderWidth: 3 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, subtitle: { display: !!subtitleText, text: subtitleText, font: { size: 12, style: 'italic' }, padding: { bottom: 10 } } } }
+                data: {
+                    labels: monthOrder,
+                    datasets: [{
+                        label: 'Programs',
+                        data: monthOrder.map(m => monthData[m]),
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        subtitle: {
+                            display: !!subtitleText,
+                            text: subtitleText,
+                            font: { size: 12, style: 'italic' },
+                            padding: { bottom: 10 }
+                        }
+                    }
+                }
             });
         }
 
         function createBranchChart() {
-            const data = getFilteredForCharts(null);
             const branchData = {};
-            data.forEach(d => { branchData[d.Branch] = (branchData[d.Branch] || 0) + 1; });
-            const sorted = Object.entries(branchData).sort((a, b) => b[1] - a[1]).slice(0, 10);
-            const subtitleParts = [];
-            if (selectedFilters.year.length === 0) subtitleParts.push('All-Time Data');
-            if (selectedFilters.campaign.length > 0) subtitleParts.push(`Campaign: ${selectedFilters.campaign.join(', ')}`);
+            // Get data to use based on all current filters
+            let useData = allData.filter(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
+            });
+            
+            useData.forEach(d => {
+                branchData[d.Branch] = (branchData[d.Branch] || 0) + 1;
+            });
+
+            const sorted = Object.entries(branchData)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+
             const ctx = document.getElementById('branchChart').getContext('2d');
             charts.branch = new Chart(ctx, {
                 type: 'bar',
-                data: { labels: sorted.map(s => s[0]), datasets: [{ label: 'Programs', data: sorted.map(s => s[1]), backgroundColor: 'rgba(102,126,234,0.8)', borderColor: '#667eea', borderWidth: 2 }] },
-                options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false }, subtitle: { display: subtitleParts.length > 0, text: subtitleParts.join(' | '), font: { size: 12, style: 'italic' }, padding: { bottom: 10 } } } }
+                data: {
+                    labels: sorted.map(s => s[0]),
+                    datasets: [{
+                        label: 'Programs',
+                        data: sorted.map(s => s[1]),
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: '#667eea',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: { 
+                        legend: { display: false },
+                        subtitle: {
+                            display: selectedFilters.year.length === 0 || selectedFilters.campaign.length > 0,
+                            text: (() => {
+                                const parts = [];
+                                if (selectedFilters.year.length === 0) parts.push('All-Time Data');
+                                if (selectedFilters.campaign.length > 0) {
+                                    parts.push(`Campaign: ${selectedFilters.campaign.join(', ')}`);
+                                }
+                                return parts.join(' | ');
+                            })(),
+                            font: { size: 12, style: 'italic' },
+                            padding: { bottom: 10 }
+                        }
+                    }
+                }
             });
         }
 
         function createActivityChart() {
-            const data = getFilteredForCharts(null);
             const activityData = {};
-            activityFields.forEach(f => { activityData[f] = data.filter(d => d[f]).length; });
-            const sorted = Object.entries(activityData).sort((a, b) => b[1] - a[1]).slice(0, 8);
+            // Get data to use based on all current filters
+            let useData = allData.filter(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
+            });
+            
+            activityFields.forEach(field => {
+                activityData[field] = useData.filter(d => d[field]).length;
+            });
+
+            const sorted = Object.entries(activityData)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 8);
+
             const ctx = document.getElementById('activityChart').getContext('2d');
             charts.activity = new Chart(ctx, {
                 type: 'doughnut',
-                data: { labels: sorted.map(s => s[0]), datasets: [{ data: sorted.map(s => s[1]), backgroundColor: ['#667eea','#764ba2','#f093fb','#f5576c','#4facfe','#00f2fe','#43e97b','#38f9d7'] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+                data: {
+                    labels: sorted.map(s => s[0]),
+                    datasets: [{
+                        data: sorted.map(s => s[1]),
+                        backgroundColor: [
+                            '#667eea', '#764ba2', '#f093fb', '#f5576c',
+                            '#4facfe', '#00f2fe', '#43e97b', '#38f9d7'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right' }
+                    }
+                }
             });
         }
 
         function createStateChart() {
-            const data = getFilteredForCharts(null);
             const stateData = {};
-            data.forEach(d => { stateData[d.State] = (stateData[d.State] || 0) + 1; });
-            const sorted = Object.entries(stateData).sort((a, b) => b[1] - a[1]);
-            const subtitleParts = [];
-            if (selectedFilters.year.length === 0) subtitleParts.push('All-Time Data');
-            if (selectedFilters.campaign.length > 0) subtitleParts.push(`Campaign: ${selectedFilters.campaign.join(', ')}`);
+            // Get data to use based on all current filters
+            let useData = allData.filter(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
+            });
+            
+            useData.forEach(d => {
+                stateData[d.State] = (stateData[d.State] || 0) + 1;
+            });
+
+            const sorted = Object.entries(stateData)
+                .sort((a, b) => b[1] - a[1]);
+
             const ctx = document.getElementById('stateChart').getContext('2d');
             charts.state = new Chart(ctx, {
                 type: 'bar',
-                data: { labels: sorted.map(s => s[0]), datasets: [{ label: 'Programs', data: sorted.map(s => s[1]), backgroundColor: 'rgba(245,87,108,0.8)', borderColor: '#f5576c', borderWidth: 2 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, subtitle: { display: subtitleParts.length > 0, text: subtitleParts.join(' | '), font: { size: 12, style: 'italic' }, padding: { bottom: 10 } } } }
+                data: {
+                    labels: sorted.map(s => s[0]),
+                    datasets: [{
+                        label: 'Programs',
+                        data: sorted.map(s => s[1]),
+                        backgroundColor: 'rgba(245, 87, 108, 0.8)',
+                        borderColor: '#f5576c',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { display: false },
+                        subtitle: {
+                            display: selectedFilters.year.length === 0 || selectedFilters.campaign.length > 0,
+                            text: (() => {
+                                const parts = [];
+                                if (selectedFilters.year.length === 0) parts.push('All-Time Data');
+                                if (selectedFilters.campaign.length > 0) {
+                                    parts.push(`Campaign: ${selectedFilters.campaign.join(', ')}`);
+                                }
+                                return parts.join(' | ');
+                            })(),
+                            font: { size: 12, style: 'italic' },
+                            padding: { bottom: 10 }
+                        }
+                    }
+                }
             });
         }
 
         function createProgramTypeChart() {
-            const data = getFilteredForCharts(null);
-            const typeData = {};
-            data.forEach(d => { const t = d['Type of Program'] || 'Other'; typeData[t] = (typeData[t] || 0) + 1; });
-            const sorted = Object.entries(typeData).sort((a, b) => b[1] - a[1]);
+            const programTypeData = {};
+            // Get data to use based on all current filters
+            let useData = allData.filter(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.year.length === 0 || selectedFilters.year.includes(String(d.Year))) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
+            });
+            
+            useData.forEach(d => {
+                const type = d['Type of Program'] || 'Other';
+                programTypeData[type] = (programTypeData[type] || 0) + 1;
+            });
+
+            const sorted = Object.entries(programTypeData)
+                .sort((a, b) => b[1] - a[1]);
+
             const ctx = document.getElementById('programTypeChart').getContext('2d');
             charts.programType = new Chart(ctx, {
                 type: 'pie',
-                data: { labels: sorted.map(s => s[0]), datasets: [{ data: sorted.map(s => s[1]), backgroundColor: ['#667eea','#f5576c','#43e97b','#4facfe','#f093fb','#38f9d7','#764ba2','#00f2fe'] }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+                data: {
+                    labels: sorted.map(s => s[0]),
+                    datasets: [{
+                        data: sorted.map(s => s[1]),
+                        backgroundColor: [
+                            '#667eea', '#f5576c', '#43e97b', '#4facfe',
+                            '#f093fb', '#38f9d7', '#764ba2', '#00f2fe'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right' }
+                    }
+                }
             });
         }
 
         function createImpactChart() {
-            const data = allData.filter(d =>
-                (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
-                (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
-                (selectedFilters.month.length === 0 || selectedFilters.month.includes(d.Month)) &&
-                (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
-                (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'))
-            );
             const yearData = {};
-            data.forEach(d => {
-                if (!yearData[d.Year]) yearData[d.Year] = { programs: 0, beneficiaries: 0 };
-                yearData[d.Year].programs++;
-                yearData[d.Year].beneficiaries += getBeneficiaryCount(d);
+            // Get data to use based on current filters (except year to show all years in impact chart)
+            let useData = allData.filter(d => {
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizeMonth(d.Month))) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (selectedFilters.campaign.length === 0 || selectedFilters.campaign.includes(d['Campaign Name'] || 'Not Specified'));
             });
+                
+            useData.forEach(d => {
+                const year = d.Year;
+                if (!yearData[year]) {
+                    yearData[year] = {
+                        programs: 0,
+                        beneficiaries: 0,
+                        branches: new Set()
+                    };
+                }
+                yearData[year].programs++;
+                yearData[year].beneficiaries += getBeneficiaryCount(d);
+                yearData[year].branches.add(d.Branch);
+            });
+
             const years = Object.keys(yearData).sort();
+            const programCounts = years.map(y => yearData[y].programs);
+            const beneficiaryCounts = years.map(y => yearData[y].beneficiaries);
+
             const ctx = document.getElementById('impactChart').getContext('2d');
             charts.impact = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: years,
                     datasets: [
-                        { label: 'Programs Conducted', data: years.map(y => yearData[y].programs), borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.1)', yAxisID: 'y', tension: 0.4, borderWidth: 3, pointRadius: 5 },
-                        { label: 'Beneficiaries Reached', data: years.map(y => yearData[y].beneficiaries), borderColor: '#43e97b', backgroundColor: 'rgba(67,233,123,0.1)', yAxisID: 'y1', tension: 0.4, borderWidth: 3, pointRadius: 5 }
+                        {
+                            label: 'Programs Conducted',
+                            data: programCounts,
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            yAxisID: 'y',
+                            tension: 0.4,
+                            borderWidth: 3,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        },
+                        {
+                            label: 'Beneficiaries Reached',
+                            data: beneficiaryCounts,
+                            borderColor: '#43e97b',
+                            backgroundColor: 'rgba(67, 233, 123, 0.1)',
+                            yAxisID: 'y1',
+                            tension: 0.4,
+                            borderWidth: 3,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }
                     ]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
-                    plugins: { legend: { display: true, position: 'top' } },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += context.parsed.y.toLocaleString();
+                                    return label;
+                                }
+                            }
+                        }
+                    },
                     scales: {
-                        y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Number of Programs', color: '#667eea', font: { weight: 'bold' } }, ticks: { callback: v => v.toLocaleString() } },
-                        y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Beneficiaries Reached', color: '#43e97b', font: { weight: 'bold' } }, grid: { drawOnChartArea: false }, ticks: { callback: v => v.toLocaleString() } }
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Number of Programs',
+                                color: '#667eea',
+                                font: { weight: 'bold' }
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString();
+                                }
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Beneficiaries Reached',
+                                color: '#43e97b',
+                                font: { weight: 'bold' }
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString();
+                                }
+                            }
+                        }
                     }
                 }
             });
@@ -1241,365 +2142,216 @@
 
         function formatDate(dateStr) {
             if (!dateStr) return 'N/A';
+            
             try {
                 const date = new Date(dateStr);
-                const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-                const d = date.getDate();
-                return `${d < 10 ? '0' + d : d}-${months[date.getMonth()]}-${date.getFullYear()}`;
-            } catch (e) { return dateStr; }
+                const day = date.getDate();
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const month = months[date.getMonth()];
+                const year = date.getFullYear();
+                
+                // Pad day with leading zero if single digit for consistent width
+                const paddedDay = day < 10 ? `0${day}` : day;
+                return `${paddedDay}-${month}-${year}`;
+            } catch (e) {
+                return dateStr;
+            }
         }
 
         function parseDate(dateStr) {
             if (!dateStr) return new Date(0);
-            try { return new Date(dateStr); } catch (e) { return new Date(0); }
+            try {
+                return new Date(dateStr);
+            } catch (e) {
+                return new Date(0);
+            }
         }
 
         function updateTable() {
-            const sorted = [...filteredData].sort((a, b) => parseDate(b['Full Date'] || b.Date) - parseDate(a['Full Date'] || a.Date));
-            const recent = sorted.slice(0, 20);
-            document.getElementById('tableBody').innerHTML = recent.map((d, i) => `
-                <tr>
-                    <td style="white-space:nowrap;">${formatDate(d['Full Date'] || d.Date)}</td>
-                    <td>${d.State || 'N/A'}</td>
-                    <td>${d.Branch || 'N/A'}</td>
-                    <td>${d.Venue || 'N/A'}</td>
-                    <td>${getBeneficiaryCount(d).toLocaleString()}</td>
-                    <td>${d['Type of Program'] || 'N/A'}</td>
-                    <td><button class="view-details-btn" onclick="showDetails(${sorted.indexOf(d)}, filteredData)">View Details</button></td>
-                </tr>`).join('');
-        }
-
-        // ===================== CAMPAIGN ANALYSIS =====================
-        function populateCampaignSelectors() {
-            const campaigns = [...new Set(allData.map(d => d['Campaign Name']).filter(Boolean))].sort();
-            const sel1 = document.getElementById('campaignSelector');
-            const sel2 = document.getElementById('campaignCompare');
-            campaigns.forEach(c => {
-                sel1.add(new Option(c, c));
-                sel2.add(new Option(c, c));
+            const tableBody = document.getElementById('tableBody');
+            
+            // Sort data by date in descending order (newest first)
+            const sortedData = [...filteredData].sort((a, b) => {
+                const dateA = parseDate(a['Full Date'] || a.Date);
+                const dateB = parseDate(b['Full Date'] || b.Date);
+                return dateB - dateA; // Descending order
             });
+            
+            const recentData = sortedData.slice(0, 20);
+
+            tableBody.innerHTML = recentData.map((d, index) => {
+                return `
+                    <tr>
+                        <td style="white-space: nowrap;">${formatDate(d['Full Date'] || d.Date)}</td>
+                        <td>${d.State || 'N/A'}</td>
+                        <td>${d.Branch || 'N/A'}</td>
+                        <td>${d.Venue || 'N/A'}</td>
+                        <td>${getBeneficiaryCount(d).toLocaleString()}</td>
+                        <td>${d['Type of Program'] || 'N/A'}</td>
+                        <td><button class="view-details-btn" onclick="showDetails(${sortedData.indexOf(d)})">View Details</button></td>
+                    </tr>
+                `;
+            }).join('');
         }
 
-        function getCampaignData(campaignName) {
-            return allData.filter(d => d['Campaign Name'] === campaignName);
-        }
-
-        function updateCampaignAnalysis() {
-            const camp1 = document.getElementById('campaignSelector').value;
-            const camp2 = document.getElementById('campaignCompare').value;
-
-            // Destroy old campaign charts
-            Object.values(campaignCharts).forEach(c => c.destroy());
-            campaignCharts = {};
-
-            if (!camp1) {
-                document.getElementById('campaignKpiGrid').innerHTML = `
-                    <div class="no-campaign-data" style="grid-column:1/-1;">
-                        <div class="icon">🎯</div>
-                        <p>Select a campaign above to view performance metrics</p>
-                    </div>`;
-                document.getElementById('campaignChartsGrid').style.display = 'none';
-                document.getElementById('campaignCompareSection').style.display = 'none';
-                document.getElementById('leaderboardGrid').style.display = 'none';
-                return;
-            }
-
-            const data1 = getCampaignData(camp1);
-            renderCampaignKPIs(data1, camp1);
-            renderCampaignCharts(data1, camp1, camp2 ? getCampaignData(camp2) : null, camp2);
-            if (camp2) renderCampaignComparison(data1, camp1, getCampaignData(camp2), camp2);
-            else document.getElementById('campaignCompareSection').style.display = 'none';
-            renderLeaderboard(data1, camp1);
-        }
-
-        function renderCampaignKPIs(data, campaignName) {
-            const totalPrograms = data.length;
-            const totalBeneficiaries = data.reduce((s, d) => s + getBeneficiaryCount(d), 0);
-            const uniqueBranches = new Set(data.map(d => d.Branch)).size;
-            const uniqueStates = new Set(data.map(d => d.State)).size;
-            const avgBenefPerProgram = totalPrograms > 0 ? Math.round(totalBeneficiaries / totalPrograms) : 0;
-            const uniqueMonths = new Set(data.map(d => d.Month).filter(Boolean)).size;
-
-            document.getElementById('campaignKpiGrid').innerHTML = `
-                <div class="campaign-kpi-card blue">
-                    <span class="kpi-icon">📋</span>
-                    <div class="kpi-label">Total Programs</div>
-                    <div class="kpi-value">${totalPrograms.toLocaleString()}</div>
-                    <div class="kpi-sub">${campaignName}</div>
-                </div>
-                <div class="campaign-kpi-card pink">
-                    <span class="kpi-icon">👥</span>
-                    <div class="kpi-label">Beneficiaries Reached</div>
-                    <div class="kpi-value">${totalBeneficiaries.toLocaleString()}</div>
-                    <div class="kpi-sub">Total impact</div>
-                </div>
-                <div class="campaign-kpi-card teal">
-                    <span class="kpi-icon">🏢</span>
-                    <div class="kpi-label">Branches Involved</div>
-                    <div class="kpi-value">${uniqueBranches}</div>
-                    <div class="kpi-sub">Active branches</div>
-                </div>
-                <div class="campaign-kpi-card green">
-                    <span class="kpi-icon">🗺️</span>
-                    <div class="kpi-label">States Covered</div>
-                    <div class="kpi-value">${uniqueStates}</div>
-                    <div class="kpi-sub">Geographic spread</div>
-                </div>
-                <div class="campaign-kpi-card orange">
-                    <span class="kpi-icon">⚡</span>
-                    <div class="kpi-label">Avg / Program</div>
-                    <div class="kpi-value">${avgBenefPerProgram.toLocaleString()}</div>
-                    <div class="kpi-sub">Beneficiaries per program</div>
-                </div>
-                <div class="campaign-kpi-card indigo">
-                    <span class="kpi-icon">📅</span>
-                    <div class="kpi-label">Active Months</div>
-                    <div class="kpi-value">${uniqueMonths}</div>
-                    <div class="kpi-sub">Months with programs</div>
-                </div>`;
-        }
-
-        function renderCampaignCharts(data1, name1, data2, name2) {
-            document.getElementById('campaignChartsGrid').style.display = 'grid';
-
-            // Monthly trend
-            const monthly1 = {};
-            monthOrder.forEach(m => monthly1[m] = 0);
-            data1.forEach(d => { if (monthly1.hasOwnProperty(d.Month)) monthly1[d.Month]++; });
-
-            const datasets = [{
-                label: name1,
-                data: monthOrder.map(m => monthly1[m]),
-                borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.15)',
-                fill: true, tension: 0.4, borderWidth: 2.5, pointRadius: 4
-            }];
-
-            if (data2) {
-                const monthly2 = {};
-                monthOrder.forEach(m => monthly2[m] = 0);
-                data2.forEach(d => { if (monthly2.hasOwnProperty(d.Month)) monthly2[d.Month]++; });
-                datasets.push({
-                    label: name2,
-                    data: monthOrder.map(m => monthly2[m]),
-                    borderColor: '#f5576c', backgroundColor: 'rgba(245,87,108,0.1)',
-                    fill: true, tension: 0.4, borderWidth: 2.5, pointRadius: 4, borderDash: [5, 5]
-                });
-            }
-
-            campaignCharts.monthly = new Chart(document.getElementById('campMonthlyChart').getContext('2d'), {
-                type: 'line',
-                data: { labels: monthOrder.map(m => m.slice(0,3)), datasets },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: !!data2 } } }
+        function showDetails(dataIndex) {
+            const sortedData = [...filteredData].sort((a, b) => {
+                const dateA = parseDate(a['Full Date'] || a.Date);
+                const dateB = parseDate(b['Full Date'] || b.Date);
+                return dateB - dateA;
             });
-
-            // State chart
-            const stateData1 = {};
-            data1.forEach(d => { stateData1[d.State] = (stateData1[d.State] || 0) + 1; });
-            const stateSorted = Object.entries(stateData1).sort((a, b) => b[1] - a[1]);
-            campaignCharts.state = new Chart(document.getElementById('campStateChart').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: stateSorted.map(s => s[0]),
-                    datasets: [{ label: 'Programs', data: stateSorted.map(s => s[1]), backgroundColor: 'rgba(79,172,254,0.8)', borderColor: '#4facfe', borderWidth: 2 }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } } }
-            });
-
-            // Activity chart
-            const actData = {};
-            activityFields.forEach(f => { actData[f] = data1.filter(d => d[f]).length; });
-            const actSorted = Object.entries(actData).filter(([,v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 8);
-            campaignCharts.activity = new Chart(document.getElementById('campActivityChart').getContext('2d'), {
-                type: 'doughnut',
-                data: {
-                    labels: actSorted.map(s => s[0]),
-                    datasets: [{ data: actSorted.map(s => s[1]), backgroundColor: ['#667eea','#764ba2','#f093fb','#f5576c','#4facfe','#00f2fe','#43e97b','#38f9d7'] }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } } }
-            });
-
-            // Program type chart
-            const typeData = {};
-            data1.forEach(d => { const t = d['Type of Program'] || 'Other'; typeData[t] = (typeData[t] || 0) + 1; });
-            const typeSorted = Object.entries(typeData).sort((a, b) => b[1] - a[1]);
-            campaignCharts.type = new Chart(document.getElementById('campTypeChart').getContext('2d'), {
-                type: 'pie',
-                data: {
-                    labels: typeSorted.map(s => s[0]),
-                    datasets: [{ data: typeSorted.map(s => s[1]), backgroundColor: ['#667eea','#f5576c','#43e97b','#4facfe','#f093fb','#38f9d7','#764ba2'] }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
-            });
-        }
-
-        function renderCampaignComparison(data1, name1, data2, name2) {
-            document.getElementById('campaignCompareSection').style.display = 'block';
-            document.getElementById('compareHeader1').textContent = name1;
-            document.getElementById('compareHeader2').textContent = name2;
-
-            const p1 = data1.length, p2 = data2.length;
-            const b1 = data1.reduce((s, d) => s + getBeneficiaryCount(d), 0);
-            const b2 = data2.reduce((s, d) => s + getBeneficiaryCount(d), 0);
-            const br1 = new Set(data1.map(d => d.Branch)).size, br2 = new Set(data2.map(d => d.Branch)).size;
-            const st1 = new Set(data1.map(d => d.State)).size, st2 = new Set(data2.map(d => d.State)).size;
-            const avg1 = p1 > 0 ? Math.round(b1 / p1) : 0, avg2 = p2 > 0 ? Math.round(b2 / p2) : 0;
-
-            function winner(v1, v2) {
-                if (v1 > v2) return `<span style="color:#43e97b;font-weight:700;">✅ ${name1.split(' ').slice(0,2).join(' ')}</span>`;
-                if (v2 > v1) return `<span style="color:#43e97b;font-weight:700;">✅ ${name2.split(' ').slice(0,2).join(' ')}</span>`;
-                return '<span style="color:#f7b731;font-weight:700;">🤝 Tie</span>';
-            }
-
-            const rows = [
-                ['📋 Total Programs', p1.toLocaleString(), p2.toLocaleString(), winner(p1, p2)],
-                ['👥 Beneficiaries', b1.toLocaleString(), b2.toLocaleString(), winner(b1, b2)],
-                ['🏢 Branches', br1, br2, winner(br1, br2)],
-                ['🗺️ States', st1, st2, winner(st1, st2)],
-                ['⚡ Avg Benef/Program', avg1.toLocaleString(), avg2.toLocaleString(), winner(avg1, avg2)],
-            ];
-
-            document.getElementById('compareTableBody').innerHTML = rows.map(([metric, v1, v2, win]) => `
-                <tr>
-                    <td>${metric}</td>
-                    <td style="font-weight:700;color:#667eea;">${v1}</td>
-                    <td style="font-weight:700;color:#f5576c;">${v2}</td>
-                    <td>${win}</td>
-                </tr>`).join('');
-        }
-
-        function renderLeaderboard(data, campaignName) {
-            document.getElementById('leaderboardGrid').style.display = 'grid';
-            document.getElementById('leaderboardCampaignName').textContent = campaignName;
-
-            // Branch leaderboard
-            const branchData = {};
-            data.forEach(d => {
-                if (!branchData[d.Branch]) branchData[d.Branch] = { count: 0, state: d.State };
-                branchData[d.Branch].count++;
-            });
-            const sorted = Object.entries(branchData).sort((a, b) => b[1].count - a[1].count).slice(0, 8);
-            const maxCount = sorted[0] ? sorted[0][1].count : 1;
-
-            const rankClasses = ['rank-1','rank-2','rank-3'];
-            document.getElementById('leaderboardList').innerHTML = sorted.map(([branch, info], i) => `
-                <div class="leaderboard-item">
-                    <div class="leaderboard-rank ${i < 3 ? rankClasses[i] : 'rank-other'}">${i + 1}</div>
-                    <div class="leaderboard-info">
-                        <div class="leaderboard-branch">${branch}</div>
-                        <div class="leaderboard-state">${info.state || ''}</div>
-                    </div>
-                    <div class="leaderboard-bar">
-                        <div class="progress-bar-wrapper">
-                            <div class="progress-bar-fill" style="width:${Math.round((info.count / maxCount) * 100)}%"></div>
-                        </div>
-                    </div>
-                    <div class="leaderboard-count">${info.count}</div>
-                </div>`).join('');
-
-            // Beneficiary breakdown chart
-            const categories = ['Men', 'Women', 'Students', 'Teachers', 'Children'];
-            const catTotals = categories.map(cat => data.reduce((s, d) => s + getCategoryValue(d, cat), 0));
-            const hasData = catTotals.some(v => v > 0);
-
-            campaignCharts.benef = new Chart(document.getElementById('campBenefChart').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: categories,
-                    datasets: [{
-                        label: 'Beneficiaries',
-                        data: catTotals,
-                        backgroundColor: ['rgba(102,126,234,0.8)','rgba(245,87,108,0.8)','rgba(67,233,123,0.8)','rgba(79,172,254,0.8)','rgba(240,147,251,0.8)'],
-                        borderColor: ['#667eea','#f5576c','#43e97b','#4facfe','#f093fb'],
-                        borderWidth: 2, borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false }, subtitle: { display: !hasData, text: 'Demographic data not recorded for this campaign', font: { style: 'italic', size: 12 }, color: '#999' } },
-                    scales: { y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
-                }
-            });
-        }
-
-        // ===================== MODAL =====================
-        function showDetails(dataIndex, dataSource) {
-            const src = dataSource || filteredData;
-            const sorted = [...src].sort((a, b) => parseDate(b['Full Date'] || b.Date) - parseDate(a['Full Date'] || a.Date));
-            const program = sorted[dataIndex];
-            const conductedActivities = activityFields.filter(f => program[f]);
-            const beneficiaryCategories = ['Men','Women','Students','Teachers','Children'];
-
-            document.getElementById('modalBody').innerHTML = `
+            
+            const program = sortedData[dataIndex];
+            
+            // Get all activities
+            const conductedActivities = activityFields.filter(field => program[field]);
+            
+            // Get beneficiary breakdown
+            const beneficiaryCategories = ['Men', 'Women', 'Students', 'Teachers', 'Children'];
+            
+            const modalContent = `
                 <div class="detail-section">
                     <h3>📅 Program Information</h3>
                     <div class="detail-grid">
-                        <div class="detail-item"><label>Date</label><div class="value">${formatDate(program['Full Date'] || program.Date)}</div></div>
-                        <div class="detail-item"><label>State</label><div class="value">${program.State || 'N/A'}</div></div>
-                        <div class="detail-item"><label>Branch</label><div class="value">${program.Branch || 'N/A'}</div></div>
-                        <div class="detail-item"><label>Program Type</label><div class="value">${program['Type of Program'] || 'N/A'}</div></div>
-                        <div class="detail-item"><label>Campaign Name</label><div class="value">${program['Campaign Name'] || 'N/A'}</div></div>
-                    </div>
-                </div>
-                <div class="detail-section">
-                    <h3>📍 Venue Details</h3>
-                    <div class="detail-item"><label>Address/Venue</label><div class="value">${program.Venue || 'N/A'}</div></div>
-                </div>
-                <div class="detail-section">
-                    <h3>🎯 Activities Conducted</h3>
-                    <div class="activities-list">
-                        ${conductedActivities.length > 0
-                            ? conductedActivities.map(a => `<div class="activity-chip active">${a}</div>`).join('')
-                            : '<div class="activity-chip">No activities recorded</div>'}
-                    </div>
-                </div>
-                <div class="detail-section">
-                    <h3>👥 Beneficiaries Breakdown</h3>
-                    <div class="detail-grid">
-                        ${beneficiaryCategories.map(cat => {
-                            const val = getCategoryValue(program, cat);
-                            return `<div class="detail-item"><label>${cat}</label><div class="value">${val > 0 ? val.toLocaleString() : 'Not recorded'}</div></div>`;
-                        }).join('')}
-                        <div class="detail-item" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-left:none;">
-                            <label style="color:white;">Total Beneficiaries</label>
-                            <div class="value" style="color:white;font-size:1.5em;font-weight:bold;">${getBeneficiaryCount(program).toLocaleString()}</div>
+                        <div class="detail-item">
+                            <label>Date</label>
+                            <div class="value">${formatDate(program['Full Date'] || program.Date)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>State</label>
+                            <div class="value">${program.State || 'N/A'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>Branch</label>
+                            <div class="value">${program.Branch || 'N/A'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>Program Type</label>
+                            <div class="value">${program['Type of Program'] || 'N/A'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>Campaign Name</label>
+                            <div class="value">${program['Campaign Name'] || 'N/A'}</div>
                         </div>
                     </div>
                 </div>
+
+                <div class="detail-section">
+                    <h3>📍 Venue Details</h3>
+                    <div class="detail-item">
+                        <label>Address/Venue</label>
+                        <div class="value">${program.Venue || 'N/A'}</div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>🎯 Activities Conducted</h3>
+                    <div class="activities-list">
+                        ${conductedActivities.length > 0 
+                            ? conductedActivities.map(activity => 
+                                `<div class="activity-chip active">${activity}</div>`
+                              ).join('')
+                            : '<div class="activity-chip">No activities recorded</div>'
+                        }
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>👥 Beneficiaries Breakdown</h3>
+                    <div class="detail-grid">
+                        ${beneficiaryCategories.map(category => {
+                            const value = getCategoryValue(program, category);
+                            return `
+                                <div class="detail-item">
+                                    <label>${category}</label>
+                                    <div class="value">${value > 0 ? value.toLocaleString() : 'Not recorded'}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                        <div class="detail-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-left: none;">
+                            <label style="color: white;">Total Beneficiaries</label>
+                            <div class="value" style="color: white; font-size: 1.5em; font-weight: bold;">
+                                ${getBeneficiaryCount(program).toLocaleString()}
+                            </div>
+                        </div>
+                    </div>
+                    ${beneficiaryCategories.every(cat => getCategoryValue(program, cat) === 0) ? 
+                        '<p style="color: #999; font-size: 0.9em; margin-top: 15px; text-align: center;">📝 Demographic breakdown not available for this program</p>' 
+                        : ''}
+                </div>
+
                 <div class="detail-section">
                     <h3>📸 Documentation</h3>
                     <div class="detail-grid">
-                        <div class="detail-item"><label>Photographs</label><div class="value">${program.Photographs || 'N/A'}</div></div>
-                        <div class="detail-item"><label>Videos</label><div class="value">${program.Videos || 'N/A'}</div></div>
-                        <div class="detail-item"><label>Press Coverage</label><div class="value">${program['Press Coverage'] || 'N/A'}</div></div>
-                        <div class="detail-item"><label>Appreciation Letter</label><div class="value">${program['Appreciation Letter'] || 'N/A'}</div></div>
+                        <div class="detail-item">
+                            <label>Photographs</label>
+                            <div class="value">${program.Photographs || 'N/A'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>Videos</label>
+                            <div class="value">${program.Videos || 'N/A'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>Press Coverage</label>
+                            <div class="value">${program['Press Coverage'] || 'N/A'}</div>
+                        </div>
+                        <div class="detail-item">
+                            <label>Appreciation Letter</label>
+                            <div class="value">${program['Appreciation Letter'] || 'N/A'}</div>
+                        </div>
                     </div>
-                </div>`;
+                </div>
+            `;
+            
+            document.getElementById('modalBody').innerHTML = modalContent;
             document.getElementById('activityModal').style.display = 'block';
         }
 
-        function closeModal() { document.getElementById('activityModal').style.display = 'none'; }
-        window.onclick = function(e) { if (e.target === document.getElementById('activityModal')) closeModal(); };
+        function closeModal() {
+            document.getElementById('activityModal').style.display = 'none';
+        }
 
-        // ===================== AUTH =====================
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('activityModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Authentication Functions
         function handleCredentialResponse(response) {
             const data = parseJwt(response.credential);
+            const userEmail = data.email;
+            
+            // Show loading state
             document.getElementById('auth-message').textContent = 'Verifying access...';
             document.querySelector('.g_id_signin').style.display = 'none';
-            fetch(`${AUTH_SCRIPT_URL}?action=verifyUser&email=${encodeURIComponent(data.email)}`)
-                .then(r => r.json())
+            
+            // Verify the user's email with your Google Sheet
+            fetch(`${AUTH_SCRIPT_URL}?action=verifyUser&email=${encodeURIComponent(userEmail)}`)
+                .then(response => response.json())
                 .then(result => {
                     if (result.success) {
+                        // User is authorized
                         document.getElementById('auth-container').style.display = 'none';
                         document.getElementById('main-content').style.display = 'block';
+                        
+                        // Store user data in sessionStorage
                         sessionStorage.setItem('userData', JSON.stringify(result.userData));
+                        
+                        // Initialize dashboard
                         fetchData();
                     } else {
-                        document.getElementById('auth-message').textContent = result.message || 'Access denied.';
+                        // User not authorized
+                        document.getElementById('auth-message').textContent = result.message || 'Access denied. Your email is not authorized.';
                         document.querySelector('.g_id_signin').style.display = 'inline-block';
                         google.accounts.id.disableAutoSelect();
                     }
                 })
                 .catch(error => {
+                    console.error('Error:', error);
                     document.getElementById('auth-message').textContent = 'An error occurred. Please try again.';
                     document.querySelector('.g_id_signin').style.display = 'inline-block';
                 });
@@ -1620,6 +2372,7 @@
             document.getElementById('auth-message').textContent = '';
         }
 
+        // Check authentication on page load
         document.addEventListener('DOMContentLoaded', function() {
             const userData = sessionStorage.getItem('userData');
             if (userData) {
@@ -1631,6 +2384,351 @@
                 document.getElementById('main-content').style.display = 'none';
             }
         });
+
+        // Original fetchData function will be called after successful authentication
+
+        /* =====================================================================
+           CAMPAIGN ANALYSIS — NEW JS ONLY (nothing above changed)
+        ===================================================================== */
+
+        const CAMP_COLORS = [
+            '#667eea','#f5576c','#43e97b','#4facfe',
+            '#f093fb','#fa8231','#a29bfe','#00cec9',
+            '#fd79a8','#6c5ce7','#00b894','#e17055'
+        ];
+
+        let campSelectedYear = 'All';   // current year filter for campaign section
+        let campCharts = {};            // track campaign section chart instances
+
+        function getCampData() {
+            // Base data respects the top-level filters (state, branch, programType) but
+            // ignores the year filter — we handle year ourselves via campSelectedYear.
+            return allData.filter(d => {
+                const normalizedMonth = normalizeMonth(d.Month);
+                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
+                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
+                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
+                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
+                       (campSelectedYear === 'All' || String(d.Year) === String(campSelectedYear));
+            });
+        }
+
+        function buildCampYearPills() {
+            const years = [...new Set(allData.map(d => d.Year).filter(Boolean))].sort((a,b) => b - a);
+            const container = document.getElementById('campYearPills');
+            container.innerHTML = '';
+
+            // "All" pill
+            const allBtn = document.createElement('button');
+            allBtn.className = 'camp-year-btn' + (campSelectedYear === 'All' ? ' active' : '');
+            allBtn.textContent = 'All Years';
+            allBtn.onclick = () => { campSelectedYear = 'All'; renderCampSection(); };
+            container.appendChild(allBtn);
+
+            years.forEach(y => {
+                const btn = document.createElement('button');
+                btn.className = 'camp-year-btn' + (String(campSelectedYear) === String(y) ? ' active' : '');
+                btn.textContent = y;
+                btn.onclick = () => { campSelectedYear = y; renderCampSection(); };
+                container.appendChild(btn);
+            });
+        }
+
+        function updateCampaignAnalysis() {
+            buildCampYearPills();
+            renderCampSection();
+        }
+
+        function renderCampSection() {
+            // Rebuild year pill active states
+            document.querySelectorAll('.camp-year-btn').forEach(btn => {
+                btn.classList.toggle('active',
+                    btn.textContent === 'All Years' ? campSelectedYear === 'All' : btn.textContent == campSelectedYear
+                );
+            });
+
+            const data = getCampData();
+            const campaigns = [...new Set(data.map(d => d['Campaign Name']).filter(Boolean))].sort();
+
+            if (campaigns.length === 0) {
+                document.getElementById('campOverviewGrid').innerHTML =
+                    '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;">No campaign data available for the selected filters.</div>';
+                destroyCampCharts();
+                return;
+            }
+
+            // Build per-campaign stats
+            const campStats = {};
+            campaigns.forEach(c => {
+                campStats[c] = { programs: 0, beneficiaries: 0, branches: new Set(), states: new Set(), monthly: {} };
+                const monthOrder = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                monthOrder.forEach(m => campStats[c].monthly[m] = 0);
+            });
+
+            data.forEach(d => {
+                const c = d['Campaign Name'];
+                if (!c || !campStats[c]) return;
+                campStats[c].programs++;
+                campStats[c].beneficiaries += getBeneficiaryCount(d);
+                if (d.Branch) campStats[c].branches.add(d.Branch);
+                if (d.State)  campStats[c].states.add(d.State);
+                const nm = normalizeMonth(d.Month);
+                if (campStats[c].monthly[nm] !== undefined) campStats[c].monthly[nm]++;
+            });
+
+            renderCampOverviewCards(campStats, campaigns, data);
+            renderCampCharts(campStats, campaigns, data);
+            renderCampLeaderboard(data, campaigns);
+            renderCampDetailTable(campStats, campaigns, data.length);
+        }
+
+        function renderCampOverviewCards(campStats, campaigns, data) {
+            const totalPrograms   = data.length;
+            const totalBenef      = data.reduce((s,d) => s + getBeneficiaryCount(d), 0);
+            const totalCampaigns  = campaigns.length;
+            const totalBranches   = new Set(data.map(d=>d.Branch).filter(Boolean)).size;
+
+            document.getElementById('campOverviewGrid').innerHTML = `
+                <div class="camp-overview-card coc-blue">
+                    <span class="c-icon">📋</span>
+                    <div class="c-label">Total Programs</div>
+                    <div class="c-value">${totalPrograms.toLocaleString()}</div>
+                    <div class="c-sub">across all campaigns</div>
+                </div>
+                <div class="camp-overview-card coc-pink">
+                    <span class="c-icon">👥</span>
+                    <div class="c-label">Beneficiaries</div>
+                    <div class="c-value">${totalBenef.toLocaleString()}</div>
+                    <div class="c-sub">total impact</div>
+                </div>
+                <div class="camp-overview-card coc-teal">
+                    <span class="c-icon">🎯</span>
+                    <div class="c-label">Campaigns</div>
+                    <div class="c-value">${totalCampaigns}</div>
+                    <div class="c-sub">active campaigns</div>
+                </div>
+                <div class="camp-overview-card coc-green">
+                    <span class="c-icon">🏢</span>
+                    <div class="c-label">Branches</div>
+                    <div class="c-value">${totalBranches}</div>
+                    <div class="c-sub">participated</div>
+                </div>`;
+        }
+
+        function destroyCampCharts() {
+            Object.values(campCharts).forEach(c => { try { c.destroy(); } catch(e){} });
+            campCharts = {};
+        }
+
+        function renderCampCharts(campStats, campaigns, data) {
+            destroyCampCharts();
+
+            const monthOrder = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            const shortMonths = monthOrder.map(m => m.slice(0,3));
+
+            // ── 1. Programs per campaign (horizontal bar) ──────────────────
+            campCharts.prog = new Chart(document.getElementById('campBarPrograms').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: campaigns,
+                    datasets: [{
+                        label: 'Programs',
+                        data: campaigns.map(c => campStats[c].programs),
+                        backgroundColor: campaigns.map((_,i) => CAMP_COLORS[i % CAMP_COLORS.length] + 'cc'),
+                        borderColor:     campaigns.map((_,i) => CAMP_COLORS[i % CAMP_COLORS.length]),
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
+                }
+            });
+
+            // ── 2. Beneficiaries per campaign (horizontal bar) ─────────────
+            campCharts.benef = new Chart(document.getElementById('campBarBenef').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: campaigns,
+                    datasets: [{
+                        label: 'Beneficiaries',
+                        data: campaigns.map(c => campStats[c].beneficiaries),
+                        backgroundColor: campaigns.map((_,i) => CAMP_COLORS[(i+3) % CAMP_COLORS.length] + 'cc'),
+                        borderColor:     campaigns.map((_,i) => CAMP_COLORS[(i+3) % CAMP_COLORS.length]),
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
+                }
+            });
+
+            // ── 3. State-wise stacked bar ──────────────────────────────────
+            const allStates = [...new Set(data.map(d=>d.State).filter(Boolean))].sort();
+            const stateDatasets = campaigns.map((c, i) => {
+                const stateCounts = {};
+                allStates.forEach(s => stateCounts[s] = 0);
+                data.filter(d => d['Campaign Name'] === c).forEach(d => { if(d.State) stateCounts[d.State]++; });
+                return {
+                    label: c,
+                    data: allStates.map(s => stateCounts[s]),
+                    backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + 'bb',
+                    borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
+                    borderWidth: 1
+                };
+            });
+
+            campCharts.state = new Chart(document.getElementById('campStackedState').getContext('2d'), {
+                type: 'bar',
+                data: { labels: allStates, datasets: stateDatasets },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
+                    scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }
+                }
+            });
+
+            // ── 4. Radar — top 8 activity mix per campaign ─────────────────
+            const top8Activities = activityFields.slice(0, 8);
+            const radarDatasets = campaigns.map((c, i) => {
+                const cData = data.filter(d => d['Campaign Name'] === c);
+                return {
+                    label: c,
+                    data: top8Activities.map(f => cData.filter(d => d[f]).length),
+                    backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + '33',
+                    borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
+                    borderWidth: 2,
+                    pointBackgroundColor: CAMP_COLORS[i % CAMP_COLORS.length]
+                };
+            });
+
+            campCharts.radar = new Chart(document.getElementById('campRadar').getContext('2d'), {
+                type: 'radar',
+                data: { labels: top8Activities.map(a => a.split('/')[0].trim().slice(0,14)), datasets: radarDatasets },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
+                    scales: { r: { beginAtZero: true, ticks: { font: { size: 9 } } } }
+                }
+            });
+
+            // ── 5. Monthly trend line per campaign ────────────────────────
+            const monthlyDatasets = campaigns.map((c, i) => ({
+                label: c,
+                data: monthOrder.map(m => campStats[c].monthly[m]),
+                borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
+                backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + '22',
+                tension: 0.4,
+                borderWidth: 2.5,
+                pointRadius: 3,
+                fill: false
+            }));
+
+            campCharts.monthly = new Chart(document.getElementById('campLineMonthly').getContext('2d'), {
+                type: 'line',
+                data: { labels: shortMonths, datasets: monthlyDatasets },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            // ── 6. Avg beneficiaries per program ──────────────────────────
+            const avgData = campaigns.map(c => {
+                const p = campStats[c].programs;
+                return p > 0 ? Math.round(campStats[c].beneficiaries / p) : 0;
+            });
+
+            campCharts.avg = new Chart(document.getElementById('campAvgBenef').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: campaigns,
+                    datasets: [{
+                        label: 'Avg Beneficiaries / Program',
+                        data: avgData,
+                        backgroundColor: campaigns.map((_,i) => CAMP_COLORS[(i+6) % CAMP_COLORS.length] + 'cc'),
+                        borderColor:     campaigns.map((_,i) => CAMP_COLORS[(i+6) % CAMP_COLORS.length]),
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
+                }
+            });
+        }
+
+        function renderCampLeaderboard(data, campaigns) {
+            // Count programs per branch across all campaigns
+            const branchMap = {};
+            data.forEach(d => {
+                if (!d.Branch) return;
+                if (!branchMap[d.Branch]) branchMap[d.Branch] = { total: 0, state: d.State };
+                branchMap[d.Branch].total++;
+            });
+
+            const sorted = Object.entries(branchMap).sort((a,b) => b[1].total - a[1].total).slice(0, 10);
+            const maxCount = sorted[0] ? sorted[0][1].total : 1;
+            const rankClass = ['lb-r1','lb-r2','lb-r3'];
+
+            document.getElementById('campLeaderboard').innerHTML = sorted.map(([branch, info], i) => `
+                <div class="lb-row">
+                    <div class="lb-rank ${i < 3 ? rankClass[i] : 'lb-rn'}">${i+1}</div>
+                    <div class="lb-name">
+                        <strong>${branch}</strong>
+                        <span>${info.state || ''}</span>
+                    </div>
+                    <div class="lb-bar-wrap">
+                        <div class="lb-bar-fill" style="width:${Math.round((info.total/maxCount)*100)}%"></div>
+                    </div>
+                    <div class="lb-count">${info.total}</div>
+                </div>`).join('');
+        }
+
+        function renderCampDetailTable(campStats, campaigns, grandTotal) {
+            const maxProg = Math.max(...campaigns.map(c => campStats[c].programs), 1);
+
+            document.getElementById('campDetailTbody').innerHTML = campaigns.map((c, i) => {
+                const s = campStats[c];
+                const avg = s.programs > 0 ? Math.round(s.beneficiaries / s.programs) : 0;
+                const pct = grandTotal > 0 ? ((s.programs / grandTotal) * 100).toFixed(1) : 0;
+                const barW = Math.round((s.programs / maxProg) * 100);
+                return `
+                    <tr>
+                        <td>
+                            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;
+                                  background:${CAMP_COLORS[i%CAMP_COLORS.length]};margin-right:8px;"></span>
+                            ${c}
+                        </td>
+                        <td>
+                            <div class="camp-bar-inline">
+                                <div class="prog-bar"><div class="prog-fill" style="width:${barW}%;background:${CAMP_COLORS[i%CAMP_COLORS.length]};"></div></div>
+                                <span class="prog-num">${s.programs.toLocaleString()}</span>
+                            </div>
+                        </td>
+                        <td>${s.beneficiaries.toLocaleString()}</td>
+                        <td>${s.branches.size}</td>
+                        <td>${s.states.size}</td>
+                        <td>${avg.toLocaleString()}</td>
+                        <td>
+                            <span style="background:${CAMP_COLORS[i%CAMP_COLORS.length]}22;
+                                  color:${CAMP_COLORS[i%CAMP_COLORS.length]};
+                                  padding:3px 10px;border-radius:12px;font-weight:700;font-size:0.85em;">
+                                ${pct}%
+                            </span>
+                        </td>
+                    </tr>`;
+            }).join('');
+        }
+
     </script>
 </body>
 </html>
