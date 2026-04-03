@@ -479,6 +479,20 @@
             }
         }
 
+        /* ── Campaign 3-column inline row ── */
+        .camp-inline-row {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        @media (max-width: 1100px) {
+            .camp-inline-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .camp-inline-row { grid-template-columns: 1fr; }
+        }
+
         .chart-container {
             background: white;
             padding: 25px;
@@ -766,246 +780,6 @@
             height: 1px;
         }
 
-        /* =====================================================================
-           CAMPAIGN ANALYSIS — NEW CSS ONLY (nothing above changed)
-        ===================================================================== */
-
-        .campaign-section-wrapper {
-            padding: 30px;
-            background: #f8f9ff;
-            border-top: 3px solid #e9ecef;
-        }
-
-        .campaign-section-title {
-            font-size: 1.5em;
-            font-weight: 800;
-            color: #2d3748;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .campaign-section-sub {
-            color: #6c757d;
-            font-size: 0.95em;
-            margin-bottom: 25px;
-        }
-
-        /* Year filter for campaign section */
-        .camp-year-bar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 28px;
-            padding: 16px 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-        }
-
-        .camp-year-bar label {
-            font-weight: 700;
-            color: #495057;
-            font-size: 0.9em;
-            white-space: nowrap;
-        }
-
-        .camp-year-btn {
-            padding: 7px 18px;
-            border-radius: 20px;
-            border: 2px solid #dee2e6;
-            background: white;
-            color: #6c757d;
-            font-weight: 600;
-            font-size: 0.85em;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .camp-year-btn:hover {
-            border-color: #667eea;
-            color: #667eea;
-        }
-
-        .camp-year-btn.active {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 4px 12px rgba(102,126,234,0.3);
-        }
-
-        /* Overview cards row */
-        .camp-overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 28px;
-        }
-
-        .camp-overview-card {
-            border-radius: 14px;
-            padding: 20px 18px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.25s, box-shadow 0.25s;
-            cursor: default;
-        }
-
-        .camp-overview-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.15);
-        }
-
-        .camp-overview-card .c-icon { font-size: 1.6em; margin-bottom: 6px; display: block; }
-        .camp-overview-card .c-label { font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.85; }
-        .camp-overview-card .c-value { font-size: 2em; font-weight: 800; line-height: 1.1; margin: 4px 0 2px; }
-        .camp-overview-card .c-sub { font-size: 0.78em; opacity: 0.78; }
-
-        .coc-blue   { background: linear-gradient(135deg,#667eea,#764ba2); box-shadow: 0 6px 20px rgba(102,126,234,0.3); }
-        .coc-pink   { background: linear-gradient(135deg,#f093fb,#f5576c); box-shadow: 0 6px 20px rgba(245,87,108,0.3); }
-        .coc-teal   { background: linear-gradient(135deg,#4facfe,#00f2fe); box-shadow: 0 6px 20px rgba(79,172,254,0.3); }
-        .coc-green  { background: linear-gradient(135deg,#43e97b,#38f9d7); box-shadow: 0 6px 20px rgba(67,233,123,0.3); }
-
-        /* Main charts grid */
-        .camp-charts-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 24px;
-            margin-bottom: 28px;
-        }
-
-        @media (max-width: 768px) {
-            .camp-charts-row { grid-template-columns: 1fr; }
-            .camp-overview-grid { grid-template-columns: repeat(2,1fr); }
-        }
-
-        .camp-chart-box {
-            background: white;
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-        }
-
-        .camp-chart-box h3 {
-            font-size: 1em;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .camp-chart-canvas-wrap { position: relative; height: 320px; }
-
-        /* Leaderboard */
-        .camp-leaderboard-box {
-            background: white;
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-            margin-bottom: 28px;
-        }
-
-        .camp-leaderboard-box h3 {
-            font-size: 1em;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .lb-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .lb-row:last-child { border-bottom: none; }
-
-        .lb-rank {
-            width: 34px; height: 34px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 0.85em;
-            flex-shrink: 0;
-        }
-
-        .lb-r1 { background: linear-gradient(135deg,#f7b731,#fa8231); color: white; }
-        .lb-r2 { background: linear-gradient(135deg,#b2bec3,#636e72); color: white; }
-        .lb-r3 { background: linear-gradient(135deg,#cd7f32,#a0522d); color: white; }
-        .lb-rn { background: #f0f0f0; color: #6c757d; }
-
-        .lb-name { flex: 1; }
-        .lb-name strong { display: block; font-size: 0.92em; color: #2d3748; }
-        .lb-name span   { font-size: 0.78em; color: #999; }
-
-        .lb-bar-wrap { flex: 2; background: #f0f0f0; border-radius: 4px; height: 8px; overflow: hidden; }
-        .lb-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(135deg,#667eea,#764ba2); transition: width 0.8s ease; }
-
-        .lb-count { font-weight: 800; color: #667eea; min-width: 55px; text-align: right; font-size: 1em; }
-
-        /* Campaign detail table */
-        .camp-detail-table-wrap {
-            background: white;
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-            overflow-x: auto;
-        }
-
-        .camp-detail-table-wrap h3 {
-            font-size: 1em;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .camp-detail-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 6px;
-            min-width: 560px;
-        }
-
-        .camp-detail-table thead th {
-            background: transparent;
-            color: #888;
-            font-size: 0.76em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 6px 14px;
-            border: none;
-        }
-
-        .camp-detail-table tbody td {
-            background: #f8f9ff;
-            padding: 13px 14px;
-            border: none;
-            font-size: 0.9em;
-            transition: background 0.2s;
-        }
-
-        .camp-detail-table tbody tr:hover td { background: #eef0ff; }
-        .camp-detail-table tbody td:first-child { border-radius: 10px 0 0 10px; font-weight: 700; color: #2d3748; }
-        .camp-detail-table tbody td:last-child  { border-radius: 0 10px 10px 0; }
-
-        .camp-bar-inline { display: flex; align-items: center; gap: 8px; }
-        .camp-bar-inline .prog-bar { flex: 1; background: #e9ecef; border-radius: 4px; height: 7px; overflow: hidden; min-width: 60px; }
-        .camp-bar-inline .prog-fill { height: 100%; border-radius: 4px; background: linear-gradient(135deg,#667eea,#764ba2); }
-        .camp-bar-inline .prog-num  { font-weight: 700; color: #667eea; min-width: 28px; text-align: right; font-size: 0.9em; }
-
     </style>
 </head>
 <body>
@@ -1135,85 +909,6 @@
                 <tbody id="tableBody"></tbody>
             </table>
         </div>
-
-        <!-- ================================================================
-             CAMPAIGN ANALYSIS SECTION — added below existing content
-        ================================================================ -->
-        <div class="campaign-section-wrapper" id="campaignAnalysisSection">
-            <div class="campaign-section-title">🎯 Campaign-wise Analysis</div>
-            <div class="campaign-section-sub">Performance breakdown across all campaigns — filter by year using the buttons below</div>
-
-            <!-- Year filter pills -->
-            <div class="camp-year-bar">
-                <label>📅 Filter by Year:</label>
-                <div id="campYearPills" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
-            </div>
-
-            <!-- Summary KPI row -->
-            <div class="camp-overview-grid" id="campOverviewGrid"></div>
-
-            <!-- Row 1: Programs per campaign (bar) + Beneficiaries per campaign (bar) -->
-            <div class="camp-charts-row">
-                <div class="camp-chart-box">
-                    <h3>📊 Programs Conducted — per Campaign</h3>
-                    <div class="camp-chart-canvas-wrap"><canvas id="campBarPrograms"></canvas></div>
-                </div>
-                <div class="camp-chart-box">
-                    <h3>👥 Beneficiaries Reached — per Campaign</h3>
-                    <div class="camp-chart-canvas-wrap"><canvas id="campBarBenef"></canvas></div>
-                </div>
-            </div>
-
-            <!-- Row 2: Activity mix per campaign (stacked) + Program type distribution (pie) -->
-            <div class="camp-charts-row">
-                <div class="camp-chart-box">
-                    <h3>🗺️ State-wise Reach — per Campaign</h3>
-                    <div class="camp-chart-canvas-wrap"><canvas id="campStackedState"></canvas></div>
-                </div>
-                <div class="camp-chart-box">
-                    <h3>🎬 Activity Mix — per Campaign</h3>
-                    <div class="camp-chart-canvas-wrap"><canvas id="campRadar"></canvas></div>
-                </div>
-            </div>
-
-            <!-- Row 3: Monthly trend per campaign (line) + Avg beneficiaries per program (horizontal bar) -->
-            <div class="camp-charts-row">
-                <div class="camp-chart-box">
-                    <h3>📅 Monthly Trend — per Campaign</h3>
-                    <div class="camp-chart-canvas-wrap"><canvas id="campLineMonthly"></canvas></div>
-                </div>
-                <div class="camp-chart-box">
-                    <h3>⚡ Avg Beneficiaries / Program — per Campaign</h3>
-                    <div class="camp-chart-canvas-wrap"><canvas id="campAvgBenef"></canvas></div>
-                </div>
-            </div>
-
-            <!-- Branch leaderboard per campaign -->
-            <div class="camp-leaderboard-box">
-                <h3>🏆 Branch Leaderboard — Top Performers across Campaigns</h3>
-                <div id="campLeaderboard"></div>
-            </div>
-
-            <!-- Detail table -->
-            <div class="camp-detail-table-wrap">
-                <h3>📋 Campaign Summary Table</h3>
-                <table class="camp-detail-table" id="campDetailTable">
-                    <thead>
-                        <tr>
-                            <th>Campaign</th>
-                            <th>Programs</th>
-                            <th>Beneficiaries</th>
-                            <th>Branches</th>
-                            <th>States</th>
-                            <th>Avg / Program</th>
-                            <th>Share of Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="campDetailTbody"></tbody>
-                </table>
-            </div>
-        </div>
-        <!-- END CAMPAIGN ANALYSIS SECTION -->
 
         <!-- Modal for Activity Details -->
         <div id="activityModal" class="modal">
@@ -1657,7 +1352,6 @@
             updateStats();
             updateCharts();
             updateTable();
-            updateCampaignAnalysis(); // NEW — refresh campaign section too
         }
 
         function getBeneficiaryCount(record) {
@@ -1728,9 +1422,52 @@
             document.getElementById('statsGrid').innerHTML = statsHTML;
         }
 
+        const CAMP_COLORS = [
+            '#667eea','#f5576c','#43e97b','#4facfe',
+            '#f093fb','#fa8231','#a29bfe','#00cec9',
+            '#fd79a8','#6c5ce7','#00b894','#e17055'
+        ];
+        let campCharts = {};
+
+        function destroyCampCharts() {
+            Object.values(campCharts).forEach(c => { try { c.destroy(); } catch(e){} });
+            campCharts = {};
+        }
+
         function updateCharts() {
             Object.values(charts).forEach(chart => chart.destroy());
             charts = {};
+            destroyCampCharts();
+
+            // Build campaign stats from filteredData
+            const campData = filteredData.filter(d => d['Campaign Name']);
+            const campaigns = [...new Set(campData.map(d => d['Campaign Name']).filter(Boolean))].sort();
+            const campStats = {};
+            campaigns.forEach(c => { campStats[c] = { programs: 0, beneficiaries: 0 }; });
+            campData.forEach(d => {
+                const c = d['Campaign Name'];
+                if (!c || !campStats[c]) return;
+                campStats[c].programs++;
+                campStats[c].beneficiaries += getBeneficiaryCount(d);
+            });
+            const allStates = [...new Set(campData.map(d => d.State).filter(Boolean))].sort();
+
+            // Conditionally add the 3-column campaign row
+            const campRowHTML = campaigns.length > 0 ? `
+                <div class="camp-inline-row">
+                    <div class="chart-container">
+                        <h2>📊 Per Campaign — Programs Conducted</h2>
+                        <div class="chart-wrapper"><canvas id="campBarPrograms"></canvas></div>
+                    </div>
+                    <div class="chart-container">
+                        <h2>👥 Per Campaign — Beneficiaries Reached</h2>
+                        <div class="chart-wrapper"><canvas id="campBarBenef"></canvas></div>
+                    </div>
+                    <div class="chart-container">
+                        <h2>🗺️ Per Campaign — State-wise Reach</h2>
+                        <div class="chart-wrapper"><canvas id="campStackedState"></canvas></div>
+                    </div>
+                </div>` : '';
 
             const chartsHTML = `
                 <div class="chart-container"><h2>📅 Monthly Program Trends</h2><div class="chart-wrapper"><canvas id="monthlyChart"></canvas></div></div>
@@ -1739,6 +1476,7 @@
                 <div class="chart-container"><h2>🗺️ State-wise Distribution</h2><div class="chart-wrapper"><canvas id="stateChart"></canvas></div></div>
                 <div class="chart-container"><h2>📊 Program Type Analysis</h2><div class="chart-wrapper"><canvas id="programTypeChart"></canvas></div></div>
                 <div class="chart-container"><h2>📈 Program Impact Over Years</h2><div class="chart-wrapper"><canvas id="impactChart"></canvas></div></div>
+                ${campRowHTML}
             `;
             document.getElementById('chartsGrid').innerHTML = chartsHTML;
 
@@ -1748,6 +1486,71 @@
             createStateChart();
             createProgramTypeChart();
             createImpactChart();
+
+            if (campaigns.length > 0) {
+                // Camp chart 1: Programs per campaign
+                campCharts.prog = new Chart(document.getElementById('campBarPrograms').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: campaigns,
+                        datasets: [{
+                            label: 'Programs',
+                            data: campaigns.map(c => campStats[c].programs),
+                            backgroundColor: campaigns.map((_,i) => CAMP_COLORS[i % CAMP_COLORS.length] + 'cc'),
+                            borderColor:     campaigns.map((_,i) => CAMP_COLORS[i % CAMP_COLORS.length]),
+                            borderWidth: 2, borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
+                    }
+                });
+
+                // Camp chart 2: Beneficiaries per campaign
+                campCharts.benef = new Chart(document.getElementById('campBarBenef').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: campaigns,
+                        datasets: [{
+                            label: 'Beneficiaries',
+                            data: campaigns.map(c => campStats[c].beneficiaries),
+                            backgroundColor: campaigns.map((_,i) => CAMP_COLORS[(i+3) % CAMP_COLORS.length] + 'cc'),
+                            borderColor:     campaigns.map((_,i) => CAMP_COLORS[(i+3) % CAMP_COLORS.length]),
+                            borderWidth: 2, borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
+                    }
+                });
+
+                // Camp chart 3: State-wise stacked bar
+                const stateDatasets = campaigns.map((c, i) => {
+                    const stateCounts = {};
+                    allStates.forEach(s => stateCounts[s] = 0);
+                    campData.filter(d => d['Campaign Name'] === c).forEach(d => { if(d.State) stateCounts[d.State]++; });
+                    return {
+                        label: c,
+                        data: allStates.map(s => stateCounts[s]),
+                        backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + 'bb',
+                        borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
+                        borderWidth: 1
+                    };
+                });
+                campCharts.state = new Chart(document.getElementById('campStackedState').getContext('2d'), {
+                    type: 'bar',
+                    data: { labels: allStates, datasets: stateDatasets },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
+                        scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }
+                    }
+                });
+            }
         }
 
         function createMonthlyChart() {
@@ -2384,350 +2187,6 @@
                 document.getElementById('main-content').style.display = 'none';
             }
         });
-
-        // Original fetchData function will be called after successful authentication
-
-        /* =====================================================================
-           CAMPAIGN ANALYSIS — NEW JS ONLY (nothing above changed)
-        ===================================================================== */
-
-        const CAMP_COLORS = [
-            '#667eea','#f5576c','#43e97b','#4facfe',
-            '#f093fb','#fa8231','#a29bfe','#00cec9',
-            '#fd79a8','#6c5ce7','#00b894','#e17055'
-        ];
-
-        let campSelectedYear = 'All';   // current year filter for campaign section
-        let campCharts = {};            // track campaign section chart instances
-
-        function getCampData() {
-            // Base data respects the top-level filters (state, branch, programType) but
-            // ignores the year filter — we handle year ourselves via campSelectedYear.
-            return allData.filter(d => {
-                const normalizedMonth = normalizeMonth(d.Month);
-                return (selectedFilters.state.length === 0 || selectedFilters.state.includes(d.State)) &&
-                       (selectedFilters.branch.length === 0 || selectedFilters.branch.includes(d.Branch)) &&
-                       (selectedFilters.month.length === 0 || selectedFilters.month.includes(normalizedMonth)) &&
-                       (selectedFilters.programType.length === 0 || selectedFilters.programType.includes(d['Type of Program'])) &&
-                       (campSelectedYear === 'All' || String(d.Year) === String(campSelectedYear));
-            });
-        }
-
-        function buildCampYearPills() {
-            const years = [...new Set(allData.map(d => d.Year).filter(Boolean))].sort((a,b) => b - a);
-            const container = document.getElementById('campYearPills');
-            container.innerHTML = '';
-
-            // "All" pill
-            const allBtn = document.createElement('button');
-            allBtn.className = 'camp-year-btn' + (campSelectedYear === 'All' ? ' active' : '');
-            allBtn.textContent = 'All Years';
-            allBtn.onclick = () => { campSelectedYear = 'All'; renderCampSection(); };
-            container.appendChild(allBtn);
-
-            years.forEach(y => {
-                const btn = document.createElement('button');
-                btn.className = 'camp-year-btn' + (String(campSelectedYear) === String(y) ? ' active' : '');
-                btn.textContent = y;
-                btn.onclick = () => { campSelectedYear = y; renderCampSection(); };
-                container.appendChild(btn);
-            });
-        }
-
-        function updateCampaignAnalysis() {
-            buildCampYearPills();
-            renderCampSection();
-        }
-
-        function renderCampSection() {
-            // Rebuild year pill active states
-            document.querySelectorAll('.camp-year-btn').forEach(btn => {
-                btn.classList.toggle('active',
-                    btn.textContent === 'All Years' ? campSelectedYear === 'All' : btn.textContent == campSelectedYear
-                );
-            });
-
-            const data = getCampData();
-            const campaigns = [...new Set(data.map(d => d['Campaign Name']).filter(Boolean))].sort();
-
-            if (campaigns.length === 0) {
-                document.getElementById('campOverviewGrid').innerHTML =
-                    '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999;">No campaign data available for the selected filters.</div>';
-                destroyCampCharts();
-                return;
-            }
-
-            // Build per-campaign stats
-            const campStats = {};
-            campaigns.forEach(c => {
-                campStats[c] = { programs: 0, beneficiaries: 0, branches: new Set(), states: new Set(), monthly: {} };
-                const monthOrder = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                monthOrder.forEach(m => campStats[c].monthly[m] = 0);
-            });
-
-            data.forEach(d => {
-                const c = d['Campaign Name'];
-                if (!c || !campStats[c]) return;
-                campStats[c].programs++;
-                campStats[c].beneficiaries += getBeneficiaryCount(d);
-                if (d.Branch) campStats[c].branches.add(d.Branch);
-                if (d.State)  campStats[c].states.add(d.State);
-                const nm = normalizeMonth(d.Month);
-                if (campStats[c].monthly[nm] !== undefined) campStats[c].monthly[nm]++;
-            });
-
-            renderCampOverviewCards(campStats, campaigns, data);
-            renderCampCharts(campStats, campaigns, data);
-            renderCampLeaderboard(data, campaigns);
-            renderCampDetailTable(campStats, campaigns, data.length);
-        }
-
-        function renderCampOverviewCards(campStats, campaigns, data) {
-            const totalPrograms   = data.length;
-            const totalBenef      = data.reduce((s,d) => s + getBeneficiaryCount(d), 0);
-            const totalCampaigns  = campaigns.length;
-            const totalBranches   = new Set(data.map(d=>d.Branch).filter(Boolean)).size;
-
-            document.getElementById('campOverviewGrid').innerHTML = `
-                <div class="camp-overview-card coc-blue">
-                    <span class="c-icon">📋</span>
-                    <div class="c-label">Total Programs</div>
-                    <div class="c-value">${totalPrograms.toLocaleString()}</div>
-                    <div class="c-sub">across all campaigns</div>
-                </div>
-                <div class="camp-overview-card coc-pink">
-                    <span class="c-icon">👥</span>
-                    <div class="c-label">Beneficiaries</div>
-                    <div class="c-value">${totalBenef.toLocaleString()}</div>
-                    <div class="c-sub">total impact</div>
-                </div>
-                <div class="camp-overview-card coc-teal">
-                    <span class="c-icon">🎯</span>
-                    <div class="c-label">Campaigns</div>
-                    <div class="c-value">${totalCampaigns}</div>
-                    <div class="c-sub">active campaigns</div>
-                </div>
-                <div class="camp-overview-card coc-green">
-                    <span class="c-icon">🏢</span>
-                    <div class="c-label">Branches</div>
-                    <div class="c-value">${totalBranches}</div>
-                    <div class="c-sub">participated</div>
-                </div>`;
-        }
-
-        function destroyCampCharts() {
-            Object.values(campCharts).forEach(c => { try { c.destroy(); } catch(e){} });
-            campCharts = {};
-        }
-
-        function renderCampCharts(campStats, campaigns, data) {
-            destroyCampCharts();
-
-            const monthOrder = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-            const shortMonths = monthOrder.map(m => m.slice(0,3));
-
-            // ── 1. Programs per campaign (horizontal bar) ──────────────────
-            campCharts.prog = new Chart(document.getElementById('campBarPrograms').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: campaigns,
-                    datasets: [{
-                        label: 'Programs',
-                        data: campaigns.map(c => campStats[c].programs),
-                        backgroundColor: campaigns.map((_,i) => CAMP_COLORS[i % CAMP_COLORS.length] + 'cc'),
-                        borderColor:     campaigns.map((_,i) => CAMP_COLORS[i % CAMP_COLORS.length]),
-                        borderWidth: 2,
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                    plugins: { legend: { display: false } },
-                    scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
-                }
-            });
-
-            // ── 2. Beneficiaries per campaign (horizontal bar) ─────────────
-            campCharts.benef = new Chart(document.getElementById('campBarBenef').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: campaigns,
-                    datasets: [{
-                        label: 'Beneficiaries',
-                        data: campaigns.map(c => campStats[c].beneficiaries),
-                        backgroundColor: campaigns.map((_,i) => CAMP_COLORS[(i+3) % CAMP_COLORS.length] + 'cc'),
-                        borderColor:     campaigns.map((_,i) => CAMP_COLORS[(i+3) % CAMP_COLORS.length]),
-                        borderWidth: 2,
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                    plugins: { legend: { display: false } },
-                    scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
-                }
-            });
-
-            // ── 3. State-wise stacked bar ──────────────────────────────────
-            const allStates = [...new Set(data.map(d=>d.State).filter(Boolean))].sort();
-            const stateDatasets = campaigns.map((c, i) => {
-                const stateCounts = {};
-                allStates.forEach(s => stateCounts[s] = 0);
-                data.filter(d => d['Campaign Name'] === c).forEach(d => { if(d.State) stateCounts[d.State]++; });
-                return {
-                    label: c,
-                    data: allStates.map(s => stateCounts[s]),
-                    backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + 'bb',
-                    borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
-                    borderWidth: 1
-                };
-            });
-
-            campCharts.state = new Chart(document.getElementById('campStackedState').getContext('2d'), {
-                type: 'bar',
-                data: { labels: allStates, datasets: stateDatasets },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
-                    scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }
-                }
-            });
-
-            // ── 4. Radar — top 8 activity mix per campaign ─────────────────
-            const top8Activities = activityFields.slice(0, 8);
-            const radarDatasets = campaigns.map((c, i) => {
-                const cData = data.filter(d => d['Campaign Name'] === c);
-                return {
-                    label: c,
-                    data: top8Activities.map(f => cData.filter(d => d[f]).length),
-                    backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + '33',
-                    borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
-                    borderWidth: 2,
-                    pointBackgroundColor: CAMP_COLORS[i % CAMP_COLORS.length]
-                };
-            });
-
-            campCharts.radar = new Chart(document.getElementById('campRadar').getContext('2d'), {
-                type: 'radar',
-                data: { labels: top8Activities.map(a => a.split('/')[0].trim().slice(0,14)), datasets: radarDatasets },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
-                    scales: { r: { beginAtZero: true, ticks: { font: { size: 9 } } } }
-                }
-            });
-
-            // ── 5. Monthly trend line per campaign ────────────────────────
-            const monthlyDatasets = campaigns.map((c, i) => ({
-                label: c,
-                data: monthOrder.map(m => campStats[c].monthly[m]),
-                borderColor: CAMP_COLORS[i % CAMP_COLORS.length],
-                backgroundColor: CAMP_COLORS[i % CAMP_COLORS.length] + '22',
-                tension: 0.4,
-                borderWidth: 2.5,
-                pointRadius: 3,
-                fill: false
-            }));
-
-            campCharts.monthly = new Chart(document.getElementById('campLineMonthly').getContext('2d'), {
-                type: 'line',
-                data: { labels: shortMonths, datasets: monthlyDatasets },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, boxWidth: 12 } } },
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
-
-            // ── 6. Avg beneficiaries per program ──────────────────────────
-            const avgData = campaigns.map(c => {
-                const p = campStats[c].programs;
-                return p > 0 ? Math.round(campStats[c].beneficiaries / p) : 0;
-            });
-
-            campCharts.avg = new Chart(document.getElementById('campAvgBenef').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: campaigns,
-                    datasets: [{
-                        label: 'Avg Beneficiaries / Program',
-                        data: avgData,
-                        backgroundColor: campaigns.map((_,i) => CAMP_COLORS[(i+6) % CAMP_COLORS.length] + 'cc'),
-                        borderColor:     campaigns.map((_,i) => CAMP_COLORS[(i+6) % CAMP_COLORS.length]),
-                        borderWidth: 2,
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                    plugins: { legend: { display: false } },
-                    scales: { x: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() } } }
-                }
-            });
-        }
-
-        function renderCampLeaderboard(data, campaigns) {
-            // Count programs per branch across all campaigns
-            const branchMap = {};
-            data.forEach(d => {
-                if (!d.Branch) return;
-                if (!branchMap[d.Branch]) branchMap[d.Branch] = { total: 0, state: d.State };
-                branchMap[d.Branch].total++;
-            });
-
-            const sorted = Object.entries(branchMap).sort((a,b) => b[1].total - a[1].total).slice(0, 10);
-            const maxCount = sorted[0] ? sorted[0][1].total : 1;
-            const rankClass = ['lb-r1','lb-r2','lb-r3'];
-
-            document.getElementById('campLeaderboard').innerHTML = sorted.map(([branch, info], i) => `
-                <div class="lb-row">
-                    <div class="lb-rank ${i < 3 ? rankClass[i] : 'lb-rn'}">${i+1}</div>
-                    <div class="lb-name">
-                        <strong>${branch}</strong>
-                        <span>${info.state || ''}</span>
-                    </div>
-                    <div class="lb-bar-wrap">
-                        <div class="lb-bar-fill" style="width:${Math.round((info.total/maxCount)*100)}%"></div>
-                    </div>
-                    <div class="lb-count">${info.total}</div>
-                </div>`).join('');
-        }
-
-        function renderCampDetailTable(campStats, campaigns, grandTotal) {
-            const maxProg = Math.max(...campaigns.map(c => campStats[c].programs), 1);
-
-            document.getElementById('campDetailTbody').innerHTML = campaigns.map((c, i) => {
-                const s = campStats[c];
-                const avg = s.programs > 0 ? Math.round(s.beneficiaries / s.programs) : 0;
-                const pct = grandTotal > 0 ? ((s.programs / grandTotal) * 100).toFixed(1) : 0;
-                const barW = Math.round((s.programs / maxProg) * 100);
-                return `
-                    <tr>
-                        <td>
-                            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;
-                                  background:${CAMP_COLORS[i%CAMP_COLORS.length]};margin-right:8px;"></span>
-                            ${c}
-                        </td>
-                        <td>
-                            <div class="camp-bar-inline">
-                                <div class="prog-bar"><div class="prog-fill" style="width:${barW}%;background:${CAMP_COLORS[i%CAMP_COLORS.length]};"></div></div>
-                                <span class="prog-num">${s.programs.toLocaleString()}</span>
-                            </div>
-                        </td>
-                        <td>${s.beneficiaries.toLocaleString()}</td>
-                        <td>${s.branches.size}</td>
-                        <td>${s.states.size}</td>
-                        <td>${avg.toLocaleString()}</td>
-                        <td>
-                            <span style="background:${CAMP_COLORS[i%CAMP_COLORS.length]}22;
-                                  color:${CAMP_COLORS[i%CAMP_COLORS.length]};
-                                  padding:3px 10px;border-radius:12px;font-weight:700;font-size:0.85em;">
-                                ${pct}%
-                            </span>
-                        </td>
-                    </tr>`;
-            }).join('');
-        }
 
     </script>
 </body>
